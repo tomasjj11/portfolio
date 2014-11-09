@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^music/?$ /html/music.html
+RewriteRule ^contact/?$ /html/contact.html
+RewriteRule ^submit/?$ /html/contactengine.php
