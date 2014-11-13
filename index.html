@@ -12,7 +12,7 @@
 	<link href="css/colours.css" type="text/css" rel="stylesheet" />
 	<link href="css/animate/animate.min.css" type="text/css" rel="stylesheet" />
 </head>
-<body>
+<body id="body">
 	<nav class="background-grey animated slideInLeft">
 		<div class="container">
 			<div class="row">
@@ -56,7 +56,27 @@
 
     <!-- Javascript -->
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="bower_components/hammerjs/hammer.min.js"></script>
+	<!--<script type="text/javascript" src="bower_components/jquery-hammerjs/jquery.hammer.js"></script>-->
 	<script type="text/javascript">
+
+		var hammer = new Hammer.Manager(document.getElementById('body'));
+		var swipe = new Hammer.Swipe();
+		hammer.add(swipe);
+
+		hammer.on('swipe', function(event){
+			$('nav').css('animation-delay','0s');
+			if(event.direction == Hammer.DIRECTION_LEFT) {
+				if (!$('nav').hasClass('slideOutLeft')) {
+					$('nav').removeClass('slideInLeft').addClass('slideOutLeft')
+				}
+			} else if (event.direction == Hammer.DIRECTION_RIGHT) {
+				if (!$('nav').hasClass('slideInLeft')) {
+					$('nav').removeClass('slideOutLeft').addClass('slideInLeft')
+				}
+			}
+		});
+
 		$(document).ready(function(){
 			$('nav .close').click(function(e){
 				$('nav').css('animation-delay','0s');

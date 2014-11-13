@@ -17,7 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "hammer.js": "~2.0.4",
-    "bootstrap": "~3.3.0"
+    "bootstrap": "~3.3.0",
+    "hammerjs": "~2.0.4"
   }
 }
