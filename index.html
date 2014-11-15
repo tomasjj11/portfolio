@@ -5,7 +5,7 @@
     <title>Thomas Jordan | Website Developer & Software Engineer</title>
 
     <!-- CSS -->
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:100,400,700' rel='stylesheet' type='text/css'>
 	<!--<link href='fonts/bushcraft/stylesheet.css' rel='stylesheet' type='text/css'>-->
 	<link href="css/main.css" type="text/css" rel="stylesheet" />
@@ -13,11 +13,11 @@
 	<link href="css/animate/animate.min.css" type="text/css" rel="stylesheet" />
 </head>
 <body id="body">
-	<nav class="background-grey animated slideInLeft">
+	<nav class="background-grey animated">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
-					<img class="close" src="images/navigation_icons/close.png" height="20px" width="20px" alt="Close Navigation"/>
+					<img class="close" src="images/navigation_icons/close.png" height="25px" width="25px" alt="Close Navigation"/>
 				</div>
 			</div>
 			<div class="row">
@@ -38,6 +38,11 @@
 			</div>
 		</div>
 	</nav>
+	<div class="hamburger-menu animated slideInLeft">
+		<span></span>
+		<p>Menu</p>
+	</div>
+	<div class="site-overlay"></div>
     <!-- Header -->
     <header>
 		<div class="mask"></div>
@@ -65,24 +70,35 @@
 		hammer.add(swipe);
 
 		hammer.on('swipe', function(event){
-			$('nav').css('animation-delay','0s');
-			if(event.direction == Hammer.DIRECTION_LEFT) {
-				if (!$('nav').hasClass('slideOutLeft')) {
-					$('nav').removeClass('slideInLeft').addClass('slideOutLeft')
-				}
-			} else if (event.direction == Hammer.DIRECTION_RIGHT) {
-				if (!$('nav').hasClass('slideInLeft')) {
-					$('nav').removeClass('slideOutLeft').addClass('slideInLeft')
-				}
+			if(event.direction === Hammer.DIRECTION_LEFT) {
+				hideMenu();
+			} else if (event.direction === Hammer.DIRECTION_RIGHT) {
+				showMenu();
 			}
 		});
 
 		$(document).ready(function(){
-			$('nav .close').click(function(e){
-				$('nav').css('animation-delay','0s');
-				$(this).parents('nav').toggleClass('slideInLeft slideOutLeft');
+			$('.hamburger-menu, .hamburger-menu span').click(function (){
+				showMenu();
+			});
+			$('nav .close, .siteOverlay').click(function(e){
+				hideMenu();
 			});
 		});
+
+		function hideMenu () {
+			if (!$('nav').hasClass('slideOutLeft')) {
+				$('nav').show().removeClass('slideInLeft').addClass('slideOutLeft');
+				$('.siteOverlay').fadeOut(700);
+			}
+		}
+		function showMenu () {
+			if (!$('nav').hasClass('slideInLeft')) {
+				$('nav').show().removeClass('slideOutLeft').addClass('slideInLeft');
+				$('.siteOverlay').fadeIn(700);
+			}
+		}
+
 	</script>
 
 </body>
