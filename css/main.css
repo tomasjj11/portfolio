@@ -61,6 +61,7 @@ h2{
 
 /*NAVIGATION STYLES*/
 .hamburger-menu {
+	animation-delay: 2.3s;
 	z-index:8;
 	width: 50px;
 	height: 50px;
@@ -68,12 +69,6 @@ h2{
 	left: 50px;
 	top: 50px;
 	cursor:pointer;
-
-	animation-delay: 2.3s;
-	-webkit-animation-delay: 2.3s;
-	-moz-animation-delay: 2.3s;
-	-o-animation-delay: 2.3s;
-	ms-animation-delay: 2.3s;
 }
 
 .hamburger-menu p{
@@ -82,7 +77,7 @@ h2{
 	font-size:20px;
 	font-weight: 400;
 
-	color:rgba(162,162,162,1);
+	color:#A2A2A1;
 
 	-webkit-transition: color .2s ease;
 	-moz-transition: color 2s ease;
@@ -91,7 +86,7 @@ h2{
 }
 .hamburger-menu:hover p {
 	top:41px;
-	color:rgba(162,162,162,.5);
+	color:#6C6C6B;
 }
 
 .hamburger-menu span {
@@ -123,7 +118,7 @@ h2{
 .hamburger-menu span:after {top:15px;}
 .hamburger-menu span:before {top:30px;}
 
-.hamburger-menu:hover span,.hamburger-menu:hover span:after, .hamburger-menu:hover span:before{background-color:rgba(162,162,162,.5);}
+.hamburger-menu:hover span,.hamburger-menu:hover span:after, .hamburger-menu:hover span:before{background-color:#6C6C6B;}
 .hamburger-menu:hover {margin-top:-1px}
 .hamburger-menu:hover span:after{top:16px}
 .hamburger-menu:hover span:before{top:32px}

@@ -38,7 +38,7 @@
 			</div>
 		</div>
 	</nav>
-	<div class="hamburger-menu animated fadeInLeft">
+	<div class="hamburger-menu animated slideInLeft">
 		<span></span>
 		<p>Menu</p>
 	</div>
@@ -89,13 +89,13 @@
 		function hideMenu () {
 			if (!$('nav').hasClass('slideOutLeft')) {
 				$('nav').show().removeClass('slideInLeft').addClass('slideOutLeft');
-				$('.site-overlay').fadeOut(500);
+				$('.site-overlay').fadeOut(700);
 			}
 		}
 		function showMenu () {
 			if (!$('nav').hasClass('slideInLeft')) {
 				$('nav').show().removeClass('slideOutLeft').addClass('slideInLeft');
-				$('.site-overlay').fadeIn(500);
+				$('.site-overlay').fadeIn(700);
 			}
 		}
 
