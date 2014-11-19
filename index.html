@@ -27,12 +27,12 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
-					<ul>
-						<li class="active">Introductions</li>
-						<li>Who I am</li>
-						<li>What I do</li>
-						<li>Previous work</li>
-						<li>Contact me</li>
+					<ul id="menu">
+						<li class="active"><a href="#introduction">Introductions</a></li>
+						<li><a href="#about">Who I am</a></li>
+						<li><a href="#skills">What I do</a></li>
+						<li><a href="#portfolio">Previous work</a></li>
+						<li><a href="#contact">Contact me</a></li>
 					</ul>
 				</div>
 			</div>
@@ -44,7 +44,7 @@
 	</div>
 	<div class="site-overlay"></div>
     <!-- Header -->
-    <header>
+    <header id="introduction">
 		<div class="mask"></div>
 		<h1 class="text-centre animated fadeInUp">Hi, my name is <span class="font-red bold">Tom</span></h1>
 		<h2 class="text-centre font-silver animated fadeIn">I'm your new <span class="font-red bold">web developer</span></h2>
@@ -52,7 +52,20 @@
 
     <!-- PAGES -->
 	<div id="content">
-		<section id="about"></section>
+		<section id="about">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="font-navy text-centre" data-sr="over 1s wait 0.5s">Who am I?</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<p class="text-centre">Hi, I'm Tom and I design and develop websites and web applications.</p>
+					<p class="text-centre">I am based in Warwick, Warwickshire in the UK and currently work in Birmingham</p>
+					<p class="text-centre">I have a strong passion for building enjoyable and easy user experiences on all devices sizes</p>
+				</div>
+			</div>
+		</section>
 		<section id="skills"></section>
 		<section id="portfolio"></section>
 		<section id="contact"></section>
@@ -62,8 +75,11 @@
     <!-- Javascript -->
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="bower_components/hammerjs/hammer.min.js"></script>
+	<script type="text/javascript" src="bower_components/scrollReveal.js/dist/scrollReveal.min.js"></script>
 	<!--<script type="text/javascript" src="bower_components/jquery-hammerjs/jquery.hammer.js"></script>-->
 	<script type="text/javascript">
+
+		window.sr = new scrollReveal();
 
 		var hammer = new Hammer.Manager(document.getElementById('body'));
 		var swipe = new Hammer.Swipe();
@@ -78,11 +94,28 @@
 		});
 
 		$(document).ready(function(){
+			// Display navigation
 			$('.hamburger-menu, .hamburger-menu span').click(function (){
 				showMenu();
 			});
 			$('nav .close, .site-overlay').click(function(e){
 				hideMenu();
+			});
+
+			//Navigation Links
+			$('#menu a').click(function(e){
+				e.preventDefault();
+				$(this).parent('li').toggleClass('active').siblings('li.active').toggleClass('active');
+				hideMenu();
+
+				if ( $(this).attr('href') == '#introduction' ){
+					//#introduction's top is not 0 because it is fixed so we need to make it so!
+					var top = 0;
+				}
+
+				$('html, body').delay(250).animate({
+					scrollTop: typeof top != 'undefined' ? top : $($(this).attr('href')).offset().top
+				}, 500);
 			});
 		});
 
@@ -97,6 +130,24 @@
 				$('nav').show().removeClass('slideOutLeft').addClass('slideInLeft');
 				$('.site-overlay').fadeIn(500);
 			}
+		}
+
+		$.fn.scrollTo = function( target, options, callback ){
+			if(typeof options == 'function' && arguments.length == 2){ callback = options; options = target; }
+			var settings = $.extend({
+				scrollTarget  : target,
+				offsetTop     : 50,
+				duration      : 500,
+				easing        : 'swing'
+			}, options);
+			return this.each(function(){
+				var scrollPane = $(this);
+				var scrollTarget = (typeof settings.scrollTarget == "number") ? settings.scrollTarget : $(settings.scrollTarget);
+				var scrollY = (typeof scrollTarget == "number") ? scrollTarget : scrollTarget.offset().top + scrollPane.scrollTop() - parseInt(settings.offsetTop);
+				scrollPane.animate({scrollTop : scrollY }, parseInt(settings.duration), settings.easing, function(){
+					if (typeof callback == 'function') { callback.call(this); }
+				});
+			});
 		}
 
 	</script>
