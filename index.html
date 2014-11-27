@@ -13,6 +13,7 @@
 	<link href="css/animate/animate.min.css" type="text/css" rel="stylesheet" />
 </head>
 <body id="body">
+	<!-- Navigation -->
 	<nav class="background-grey animated">
 		<div class="container">
 			<div class="row">
@@ -38,16 +39,23 @@
 			</div>
 		</div>
 	</nav>
+	<!-- Menu Icon -->
 	<div class="hamburger-menu animated fadeInLeft">
 		<span></span>
 		<p>Menu</p>
 	</div>
 	<div class="site-overlay"></div>
+	<!-- Scroll Icon -->
+	<div class="scroll-hint animated fadeInUp">
+		<p>Scroll</p>
+		<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+	</div>
+
     <!-- Header -->
     <header id="introduction">
 		<div class="mask"></div>
-		<h1 class="text-centre animated fadeInUp">Hi, my name is <span class="font-red bold">Tom</span></h1>
-		<h2 class="text-centre font-silver animated fadeIn">I'm your new <span class="font-red bold">web developer</span></h2>
+		<h1 class="text-centre animated fadeInDown">Hi, my name's <span class="font-red bold">Tom</span></h1>
+		<h2 class="text-centre font-silver animated fadeInUp">I'm your new <span class="font-red bold">web developer</span></h2>
     </header>
 
     <!-- PAGES -->
@@ -61,18 +69,18 @@
 			<div class="row" data-sr="over 1s wait 0.5s">
 				<div class="col-md-12">
 					<p class="text-centre">Hi, I'm Tom and I design and develop websites and web applications.</p>
-					<p class="text-centre">I am based in Warwick, Warwickshire in the UK and currently work in Birmingham</p>
-					<p class="text-centre">I have a strong passion for building enjoyable and easy user experiences on all devices sizes</p>
+					<p class="text-centre">I am based in Warwick, Warwickshire in the UK and currently work in Birmingham for a company called <a href="https://www.glide.uk.com">Glide</a>.</p>
+					<p class="text-centre">I have a strong passion for building enjoyable and easy user experiences across all device sizes</p>
 				</div>
 			</div>
 		</section>
 		<section id="skills">
 			<div class="row">
 				<div class="col-md-12">
-					<h2 class="font-navy text-centre" data-sr="over 1s wait 0.5s">What I can do</h2>
+					<h2 class="font-navy text-centre">What I can do</h2>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" data-sr="over 1s wait 0.5s">
 				<div class="col-md-12">
 					<p class="text-centre">Hi, I'm Tom and I design and develop websites and web applications.</p>
 					<p class="text-centre">I am based in Warwick, Warwickshire in the UK and currently work in Birmingham.</p>
@@ -83,10 +91,10 @@
 		<section id="portfolio" class="font-silver">
 			<div class="row">
 				<div class="col-md-12">
-					<h2 class="font-silver text-centre" data-sr="over 1s wait 0.5s">Some of my previous work</h2>
+					<h2 class="font-silver text-centre">Some of my previous work</h2>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" data-sr="over 1s wait 0.5s">
 				<div class="col-md-12">
 					<p class="text-centre">Hi, I'm Tom and I design and develop websites and web applications.</p>
 					<p class="text-centre">I am based in Warwick, Warwickshire in the UK and currently work in Birmingham</p>
@@ -134,15 +142,17 @@
 				$(this).parent('li').toggleClass('active').siblings('li.active').toggleClass('active');
 				hideMenu();
 
-				if ( $(this).attr('href') == '#introduction' ){
-					//#introduction's top is not 0 because it is fixed so we need to make it so!
-					var top = 0;
-				}
-
-				$('html, body').delay(250).animate({
-					scrollTop: typeof top != 'undefined' ? top : $($(this).attr('href')).offset().top
-				}, 500);
+				scrollTo($(this).attr('href'));
 			});
+
+			// Scroll Hint
+			$(window).scroll(function() {
+				$('.scroll-hint').children().css({'opacity': ( 150 - $(window).scrollTop() ) / 100});
+			});
+			$('.scroll-hint').click(function(e){
+				scrollTo('#about');
+			});
+
 		});
 
 		function hideMenu () {
@@ -158,22 +168,15 @@
 			}
 		}
 
-		$.fn.scrollTo = function( target, options, callback ){
-			if(typeof options == 'function' && arguments.length == 2){ callback = options; options = target; }
-			var settings = $.extend({
-				scrollTarget  : target,
-				offsetTop     : 50,
-				duration      : 500,
-				easing        : 'swing'
-			}, options);
-			return this.each(function(){
-				var scrollPane = $(this);
-				var scrollTarget = (typeof settings.scrollTarget == "number") ? settings.scrollTarget : $(settings.scrollTarget);
-				var scrollY = (typeof scrollTarget == "number") ? scrollTarget : scrollTarget.offset().top + scrollPane.scrollTop() - parseInt(settings.offsetTop);
-				scrollPane.animate({scrollTop : scrollY }, parseInt(settings.duration), settings.easing, function(){
-					if (typeof callback == 'function') { callback.call(this); }
-				});
-			});
+		function scrollTo (selector) {
+			if ( selector == '#introduction' ){
+				//#introduction's top is not 0 because it is fixed so we need to make it so!
+				var top = 0;
+			}
+
+			$('html, body').delay(250).animate({
+				scrollTop: typeof top != 'undefined' ? top : $(selector).offset().top
+			}, 500);
 		}
 
 	</script>

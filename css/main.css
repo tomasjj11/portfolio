@@ -32,7 +32,13 @@
 *
 ***************/
 
-body{font-family: 'Roboto'}
+a{color:#7BCFAC;}
+a:hover {color:#8BC471;}
+
+body{
+	font-size:18px;
+	font-family: 'Roboto'
+}
 
 h1,h2{
 	position:relative;
@@ -40,13 +46,13 @@ h1,h2{
 }
 h1{
 	font-family: 'Roboto Slab';
-	font-size: 8em;
+	font-size: 6em;
 	letter-spacing: 0px;
 	/*line-height: 130px;*/
 }
 h2{
 	font-family: Roboto;
-	font-size: 3em;
+	font-size: 2.5em;
 }
 
 .row{
@@ -60,26 +66,54 @@ h2{
 ***************/
 
 /*NAVIGATION STYLES*/
-.hamburger-menu {
+.scroll-hint, .hamburger-menu{
 	z-index:8;
 	width: 50px;
 	height: 50px;
 	position: fixed;
-	left: 50px;
-	top: 50px;
 	cursor:pointer;
 
-	animation-delay: 1.5s;
-	-webkit-animation-delay: 1.5s;
-	-moz-animation-delay: 1.5s;
-	-o-animation-delay: 1.5s;
-	ms-animation-delay: 1.5s;
+	animation-delay: 2.3s;
+	-webkit-animation-delay: 2.3s;
+	-moz-animation-delay: 2.3s;
+	-o-animation-delay: 2.3s;
+	ms-animation-delay: 2.3s;
 }
 
-.hamburger-menu p{
+.scroll-hint{
+	left: 50%;
+	bottom: 0px;
+}
+.scroll-hint span{
+	font-size: 2em;
+	text-align: center;
+	display: block;
+	color: rgba(162,162,162,1);
+
+	-webkit-transition: color .2s ease;
+	-moz-transition: color 2s ease;
+	-o-transition: color .2s ease;
+	transition: color .2s ease;
+
+	-webkit-transition: margin-top .2s ease;
+	-moz-transition: margin-top 2s ease;
+	-o-transition: margin-top .2s ease;
+	transition: margin-top .2s ease;
+}
+.scroll-hint:hover span{
+	color:rgba(162,162,162,.7);
+	margin-top:2px;
+}
+
+.hamburger-menu {
+	left: 50px;
+	top: 50px;
+}
+
+.hamburger-menu p, .scroll-hint p{
 	position: absolute;
 	top:40px;
-	font-size:20px;
+	font-size:1.1em;
 	font-weight: 400;
 
 	color:rgba(162,162,162,1);
@@ -89,9 +123,13 @@ h2{
 	-o-transition: color .2s ease;
 	transition: color .2s ease;
 }
+.scroll-hint p{top:-25px;}
+.scroll-hint:hover p{color:rgba(162,162,162,.7);}
+
+
 .hamburger-menu:hover p {
 	top:41px;
-	color:rgba(162,162,162,.5);
+	color:rgba(162,162,162,.7);
 }
 
 .hamburger-menu span {
@@ -123,7 +161,7 @@ h2{
 .hamburger-menu span:after {top:15px;}
 .hamburger-menu span:before {top:30px;}
 
-.hamburger-menu:hover span,.hamburger-menu:hover span:after, .hamburger-menu:hover span:before{background-color:rgba(162,162,162,.5);}
+.hamburger-menu:hover span,.hamburger-menu:hover span:after, .hamburger-menu:hover span:before{background-color:rgba(162,162,162,.7);}
 .hamburger-menu:hover {margin-top:-1px}
 .hamburger-menu:hover span:after{top:16px}
 .hamburger-menu:hover span:before{top:32px}
@@ -174,7 +212,7 @@ nav ul{
 nav ul li{
 	text-indent:30px;
 	font-family: 'Roboto';
-	font-size: 1.7em;
+	font-size: 1.2em;
 	font-weight:100;
 	padding:10px 0;
 	border-bottom:1px solid #4e4e4e;
