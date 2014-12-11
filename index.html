@@ -7,7 +7,6 @@
     <!-- CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:100,400,700' rel='stylesheet' type='text/css'>
-	<!--<link href='fonts/bushcraft/stylesheet.css' rel='stylesheet' type='text/css'>-->
 	<link href="css/main.css" type="text/css" rel="stylesheet" />
 	<link href="css/colours.css" type="text/css" rel="stylesheet" />
 	<link href="css/animate/animate.min.css" type="text/css" rel="stylesheet" />
@@ -37,6 +36,11 @@
 					</ul>
 				</div>
 			</div>
+			<div class="row git-info ">
+				<div class="col-md-12">
+					<p class="font-silver">Last Updated: <span id="lastUpdated"></span></p>
+				</div>
+			</div>
 		</div>
 	</nav>
 	<!-- Menu Icon -->
@@ -61,30 +65,54 @@
     <!-- PAGES -->
 	<div id="content">
 		<section id="about">
-			<div class="row">
-				<div class="col-md-12">
-					<h2 class="font-navy text-centre">Who am I?</h2>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2 class="font-navy text-centre">Who am I?</h2>
+					</div>
 				</div>
-			</div>
-			<div class="row" data-sr="over 1s wait 0.5s">
-				<div class="col-md-12">
-					<p class="text-centre">Hi, I'm Tom and I design and develop websites and web applications.</p>
-					<p class="text-centre">I am based in Warwick, Warwickshire in the UK and currently work in Birmingham for a company called <a href="https://www.glide.uk.com">Glide</a>.</p>
-					<p class="text-centre">I have a strong passion for building enjoyable and easy user experiences across all device sizes</p>
+				<div class="row" data-sr="over 1s wait 0.5s">
+					<div class="col-md-12">
+						<p class="text-centre">Hi, I'm Tom and I design and develop websites and web applications.</p>
+						<p class="text-centre">I am based in Warwick, Warwickshire in the UK and currently work in Birmingham for a company called <a href="https://www.glide.uk.com">Glide</a>.</p>
+						<p class="text-centre">I have a strong passion for building enjoyable and easy user experiences across all device sizes</p>
+					</div>
 				</div>
 			</div>
 		</section>
 		<section id="skills">
 			<div class="row">
 				<div class="col-md-12">
-					<h2 class="font-navy text-centre">What I can do</h2>
+					<h2 class="font-grey text-centre">What I do</h2>
 				</div>
-			</div>
-			<div class="row" data-sr="over 1s wait 0.5s">
-				<div class="col-md-12">
-					<p class="text-centre">Hi, I'm Tom and I design and develop websites and web applications.</p>
-					<p class="text-centre">I am based in Warwick, Warwickshire in the UK and currently work in Birmingham.</p>
-					<p class="text-centre">I have a strong passion for building enjoyable and easy user experiences.</p>
+				<div class="discipline  col-md-4">
+					<h3>Front End Development</h3>
+					<p class="text-centre">
+						I develop responsive, high performance websites with standard compliant HTML5, CSS and Javascript. Using frameworks and libraries like AnuglarJs, Bootstrap and jQuery.
+					</p>
+					<div class="sub-skills row">
+						<div class="col-md-4"><img src="images/sub-skills/HTML5_Badge.svg"/></div>
+						<div class="col-md-4"><img src="images/sub-skills/CSS3_Logo.svg"/></div>
+						<div class="col-md-4"><img src="images/sub-skills/javascript-logo.png"/></div>
+					</div>
+				</div>
+				<div class="discipline col-md-4">
+					<h3>Back End Development</h3>
+					<p class="text-centre">I often have to develop websites that require CMS systems that allow easy content editing. Along with Web application bespoke to company needs I have also built user portal systems.</p>
+					<div class="sub-skills row">
+						<div class="col-md-4"><img src="images/sub-skills/HTML5_Badge.svg"/></div>
+						<div class="col-md-4"><img src="images/sub-skills/CSS3_Logo.svg"/></div>
+						<div class="col-md-4"><img src="images/sub-skills/javascript-logo.png"/></div>
+					</div>
+				</div>
+				<div class="discipline col-md-4">
+					<h3>Design</h3>
+					<p class="text-centre"></p>
+					<div class="sub-skills row">
+						<div class="col-md-4"><img src="images/sub-skills/HTML5_Badge.svg"/></div>
+						<div class="col-md-4"><img src="images/sub-skills/CSS3_Logo.svg"/></div>
+						<div class="col-md-4"><img src="images/sub-skills/javascript-logo.png"/></div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -110,8 +138,21 @@
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="bower_components/hammerjs/hammer.min.js"></script>
 	<script type="text/javascript" src="bower_components/scrollReveal.js/dist/scrollReveal.min.js"></script>
-	<!--<script type="text/javascript" src="bower_components/jquery-hammerjs/jquery.hammer.js"></script>-->
+	<script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
+	<script type="text/javascript" src="bower_components/gh3/gh3.js"></script>
 	<script type="text/javascript">
+
+		var gitHubUser = new Gh3.User('tomasjj11');
+		var repo = new Gh3.Repository('portfolio', gitHubUser);
+
+		repo.fetch(function (err, res){
+
+			if (err) throw err.message;
+
+			var lastUpdatedDate = new Date(repo.updated_at);
+			$('#lastUpdated').html("<a href='https://github.com/tomasjj11/portfolio/commits/master'>" + lastUpdatedDate.getDate() +'/'+ (lastUpdatedDate.getMonth()+1) +'/'+ lastUpdatedDate.getFullYear()+"</a>");
+
+		});
 
 		window.sr = new scrollReveal();
 
