@@ -32,8 +32,8 @@
 *
 ***************/
 
-a{color:#7BCFAC;}
-a:hover {color:#8BC471;}
+a{color:#8BC471;}
+a:hover {color:#7BCFAC;}
 
 body{
 	font-size:18px;
@@ -235,6 +235,17 @@ nav ul li:nth-child(3) {background:url('../images/navigation_icons/skills.png') 
 nav ul li:nth-child(4) {background:url('../images/navigation_icons/work.png') center left no-repeat;}
 nav ul li:nth-child(5) {background:url('../images/navigation_icons/contact.png') center left no-repeat;}
 
+.git-info {
+	position: absolute;
+	bottom: 0px;
+}
+.git-info p{
+	border-top:1px solid #4e4e4e;
+	padding:10px 10px 10px 0;
+	font-family: 'Roboto';
+	font-size: .9em;
+	font-weight:100;
+}
 /*COVER STYLES*/
 header{
 	z-index:1;
@@ -295,3 +306,26 @@ header>h2{
 	margin-top:100vh;
 	background-color: #ffffff;
 }
+
+#skills h3{
+	font-family: 'Roboto';
+	font-weight: 100;
+	color:#3e3e3e;
+	text-align: center;
+}
+#skills .discipline:nth-child(3n+1){background-color: #f8f3f2;}
+#skills .discipline:nth-child(3n+2){background-color: #f5eeec;}
+#skills .discipline:nth-child(3n+3){background-color: #f1e7e5;}
+
+#skills .sub-skills img {
+	display: block;
+	width:100%;
+}
+
+
+/***************
+*
+* MEDIA QUERIES
+*
+***************/
+
