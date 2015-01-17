@@ -178,7 +178,8 @@
 			});
 
 			//Navigation Links
-			$('#menu a').click(function(e){
+			$(document).on("scroll", onScroll);
+			$('#menu').find('a').click(function(e){
 				e.preventDefault();
 				$(this).parent('li').toggleClass('active').siblings('li.active').toggleClass('active');
 				hideMenu();
@@ -218,6 +219,30 @@
 			$('html, body').delay(250).animate({
 				scrollTop: typeof top != 'undefined' ? top : $(selector).offset().top
 			}, 500);
+		}
+
+		function onScroll(event){
+			var scrollPos = $(document).scrollTop();
+			$('#content').find('section').each(function () {
+
+				// Get the name of the "active" link.
+				var activeMenuLink = $('#menu').find('li.active').children('a').attr('href').substring(1);
+
+				// If we are looping through the "active" link don't bother
+				if ($(this).attr('id') === activeMenuLink) {
+					return;
+				}
+
+				if (activeMenuLink == 'about' && ($('#about').offset().top - $(window).scrollTop()) > window.innerHeight - 100) {
+					$('#menu').find('li').removeClass('active');
+					$('#menu').find('li a[href="#introduction"]').parent('li').addClass('active');
+				}
+				if(($(this).offset().top - $(window).scrollTop()) < (window.innerHeight / 2)) {
+					$('#menu').find('li').removeClass('active');
+					$('#menu').find('li a[href="#'+$(this).attr('id')+'"]').parent('li').addClass('active');
+				}
+
+			});
 		}
 
 	</script>
