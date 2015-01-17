@@ -83,6 +83,7 @@ h2{
 .scroll-hint{
 	left: 50%;
 	bottom: 0px;
+	margin-left: -25px;
 }
 .scroll-hint span{
 	font-size: 2em;

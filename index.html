@@ -150,7 +150,7 @@
 			if (err) throw err.message;
 
 			var lastUpdatedDate = new Date(repo.updated_at);
-			$('#lastUpdated').html("<a href='https://github.com/tomasjj11/portfolio/commits/master'>" + lastUpdatedDate.getDate() +'/'+ (lastUpdatedDate.getMonth()+1) +'/'+ lastUpdatedDate.getFullYear()+"</a>");
+			$('#lastUpdated').html("<a href='https://github.com/tomasjj11/portfolio/commits/master'>" + lastUpdatedDate.getDate() +'/'+ ('0'+(lastUpdatedDate.getMonth()+1)).slice(-2) +'/'+ lastUpdatedDate.getFullYear()+"</a>");
 
 		});
 
@@ -233,6 +233,7 @@
 					return;
 				}
 
+				// If the about section is the active link and gets to certain place in the screen set introduction to active
 				if (activeMenuLink == 'about' && ($('#about').offset().top - $(window).scrollTop()) > window.innerHeight - 100) {
 					$('#menu').find('li').removeClass('active');
 					$('#menu').find('li a[href="#introduction"]').parent('li').addClass('active');
