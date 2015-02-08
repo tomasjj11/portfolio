@@ -4,7 +4,7 @@
     ___  ___ _ __ ___ | | | |__) |_____   _____  __ _| |  _ ___
    / __|/ __| '__/ _ \| | |  _  // _ \ \ / / _ \/ _` | | | / __|
    \__ \ (__| | | (_) | | | | \ \  __/\ V /  __/ (_| | |_| \__ \
-   |___/\___|_|  \___/|_|_|_|  \_\___| \_/ \___|\__,_|_(_) |___/ v2.0.3
+   |___/\___|_|  \___/|_|_|_|  \_\___| \_/ \___|\__,_|_(_) |___/ v2.0.5
                                                         _/ |
                                                        |__/
 
@@ -514,8 +514,8 @@ window.scrollReveal = (function( window ) {
         , elBottom = elTop + elHeight
         , vFactor  = elem.config.vFactor || 0
 
-      return ( elTop + elHeight * vFactor > self.scrolled )
-          && ( elBottom - elHeight * vFactor < self.scrolled + self.getViewportH() )
+      return ( elTop + elHeight * vFactor < self.scrolled + self.getViewportH() )
+          && ( elBottom - elHeight * vFactor > self.scrolled )
           || ( elem.domEl.currentStyle ? elem.domEl.currentStyle : window.getComputedStyle( elem.domEl, null ) ).position == 'fixed'
     },
 
