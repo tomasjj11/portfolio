@@ -8,8 +8,8 @@
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:100,400,700' rel='stylesheet' type='text/css'>
 	<link href="css/main.css" type="text/css" rel="stylesheet" />
-	<link href="css/colours.css" type="text/css" rel="stylesheet" />
-	<link href="css/animate/animate.min.css" type="text/css" rel="stylesheet" />
+	<!--<link href="css/colours.css" type="text/css" rel="stylesheet" />-->
+	<link href="bower_components/animate.css/animate.min.css" type="text/css" rel="stylesheet" />
 </head>
 <body id="body">
 	<!-- Navigation -->
@@ -198,14 +198,14 @@
 		});
 
 		function hideMenu () {
-			if (!$('nav').hasClass('slideOutLeft')) {
-				$('nav').show().removeClass('slideInLeft').addClass('slideOutLeft');
+			if (!$('nav').hasClass('fadeOutLeft')) {
+				$('nav').show().removeClass('fadeInLeft').addClass('fadeOutLeft');
 				$('.site-overlay').fadeOut(500);
 			}
 		}
 		function showMenu () {
-			if (!$('nav').hasClass('slideInLeft')) {
-				$('nav').show().removeClass('slideOutLeft').addClass('slideInLeft');
+			if (!$('nav').hasClass('fadeInLeft')) {
+				$('nav').show().removeClass('fadeOutLeft').addClass('fadeInLeft');
 				$('.site-overlay').fadeIn(500);
 			}
 		}
