@@ -7,7 +7,8 @@
     <!-- CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:100,400,700' rel='stylesheet' type='text/css'>
-	<link href="css/main.css" type="text/css" rel="stylesheet" />
+	<link href="css/main.old.css" type="text/css" rel="stylesheet" />
+	<!--<link href="css/main.min.css" type="text/css" rel="stylesheet" />-->
 	<!--<link href="css/colours.css" type="text/css" rel="stylesheet" />-->
 	<link href="bower_components/animate.css/animate.min.css" type="text/css" rel="stylesheet" />
 </head>
@@ -22,7 +23,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
-					<img id="portrait" src="images/portrait.jpg" alt="Tom's Portrait"/>
+					<img id="portrait" alt="Tom's Portrait"/>
 				</div>
 			</div>
 			<div class="row">
@@ -58,8 +59,8 @@
     <!-- Header -->
     <header id="introduction">
 		<div class="mask"></div>
-		<h1 class="text-centre animated fadeInDown">Hi, my name's <span class="font-red bold">Tom</span></h1>
-		<h2 class="text-centre font-silver animated fadeInUp">I'm your new <span class="font-red bold">web developer</span></h2>
+		<h1 class="text-centre animated fadeInDown font-grey">Hi, my name's <span class="font-red bold">Tom</span></h1>
+		<h2 class="text-centre animated fadeInUp font-grey">I'm your new <span class="font-red bold">web developer</span></h2>
     </header>
 
     <!-- PAGES -->
@@ -145,11 +146,14 @@
 		var gitHubUser = new Gh3.User('tomasjj11');
 		var repo = new Gh3.Repository('portfolio', gitHubUser);
 
+		console.log(repo);
+
 		repo.fetch(function (err, res){
 
 			if (err) throw err.message;
 
 			var lastUpdatedDate = new Date(repo.updated_at);
+			$('#portrait').attr('src',repo.owner.avatar_url);
 			$('#lastUpdated').html("<a href='https://github.com/tomasjj11/portfolio/commits/master'>" + lastUpdatedDate.getDate() +'/'+ ('0'+(lastUpdatedDate.getMonth()+1)).slice(-2) +'/'+ lastUpdatedDate.getFullYear()+"</a>");
 
 		});
