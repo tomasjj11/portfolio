@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="portfolio" ng-controller="GlobalController">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Thomas Jordan | Website Developer & Software Engineer</title>
+    <title>Tom Jordan | Website Developer & Software Engineer</title>
+	<link rel="icon" type="image/png" href="images/favicon.png"/>
 
     <!-- CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
@@ -14,7 +15,7 @@
 </head>
 <body id="body">
 	<!-- Navigation -->
-	<nav class="background-grey animated">
+	<nav class="background-grey animated" ng-controller="NavigationController">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
@@ -75,7 +76,7 @@
 				<div class="row" data-sr="over 1s wait 0.5s">
 					<div class="col-md-12">
 						<p class="text-centre">Hi, I'm Tom and I design and develop websites and web applications.</p>
-						<p class="text-centre">I am based in Warwick, Warwickshire in the UK and currently work in Birmingham for a company called <a href="https://www.glide.uk.com">Glide</a>.</p>
+						<p class="text-centre">I am based in Warwick, Warwickshire in the UK and currently work in Birmingham for a company called <a href="https://www.glide.uk.com" style="color:#09b1f0">Glide</a>.</p>
 						<p class="text-centre">I have a strong passion for building enjoyable and easy user experiences across all device sizes</p>
 					</div>
 				</div>
@@ -86,34 +87,38 @@
 				<div class="col-md-12">
 					<h2 class="font-grey text-centre">What I do</h2>
 				</div>
-				<div class="discipline  col-md-4">
-					<h3>Front End Development</h3>
-					<p class="text-centre">
-						I develop responsive, high performance websites with standard compliant HTML5, CSS and Javascript. Using frameworks and libraries like AnuglarJs, Bootstrap and jQuery.
-					</p>
-					<div class="sub-skills row">
-						<div class="col-md-4"><img src="images/sub-skills/HTML5_Badge.svg"/></div>
-						<div class="col-md-4"><img src="images/sub-skills/CSS3_Logo.svg"/></div>
-						<div class="col-md-4"><img src="images/sub-skills/javascript-logo.png"/></div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-md-offset-2 text-centre skill" data-sr="over 1s wait 0.5s">
+						<span></span>
+						<h3>JS, PHP, SQL</h3>
+					</div>
+					<div class="col-md-2 col-md-offset-1 text-centre skill" data-sr="over 1s wait 0.6s">
+						<span></span>
+						<h3>HTML</h3>
+					</div>
+					<div class="col-md-2 col-md-offset-1 text-centre skill" data-sr="over 1s wait 0.7s">
+						<span></span>
+						<h3>CSS</h3>
+					</div>
+					<div class="col-md-2 col-md-offset-2 text-centre skill" data-sr="over 1s wait 0.8s">
+						<span></span>
+						<h3>AngularJS</h3>
+					</div>
+					<div class="col-md-2 col-md-offset-1 text-centre skill" data-sr="over 1s wait 0.9s">
+						<span></span>
+						<h3>Bootstrap</h3>
+					</div>
+					<div class="col-md-2 col-md-offset-1 text-centre skill" data-sr="over 1s wait 1s">
+						<span></span>
+						<h3>Analytics</h3>
 					</div>
 				</div>
-				<div class="discipline col-md-4">
-					<h3>Back End Development</h3>
-					<p class="text-centre">I often have to develop websites that require CMS systems that allow easy content editing. Along with Web application bespoke to company needs I have also built user portal systems.</p>
-					<div class="sub-skills row">
-						<div class="col-md-4"><img src="images/sub-skills/HTML5_Badge.svg"/></div>
-						<div class="col-md-4"><img src="images/sub-skills/CSS3_Logo.svg"/></div>
-						<div class="col-md-4"><img src="images/sub-skills/javascript-logo.png"/></div>
-					</div>
-				</div>
-				<div class="discipline col-md-4">
-					<h3>Design</h3>
-					<p class="text-centre"></p>
-					<div class="sub-skills row">
-						<div class="col-md-4"><img src="images/sub-skills/HTML5_Badge.svg"/></div>
-						<div class="col-md-4"><img src="images/sub-skills/CSS3_Logo.svg"/></div>
-						<div class="col-md-4"><img src="images/sub-skills/javascript-logo.png"/></div>
-					</div>
+				<div class="row">
+					<div class="col-md-2 col-md-offset-2 text-centre"></div>
+					<div class="col-md-2 col-md-offset-1 text-centre"></div>
+					<div class="col-md-2 col-md-offset-1 text-centre"></div>
 				</div>
 			</div>
 		</section>
@@ -136,121 +141,14 @@
 
 
     <!-- Javascript -->
+	<script type="text/javascript" src="bower_components/angularjs/angular.min.js"></script>
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="bower_components/hammerjs/hammer.min.js"></script>
 	<script type="text/javascript" src="bower_components/scrollReveal.js/dist/scrollReveal.min.js"></script>
 	<script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
 	<script type="text/javascript" src="bower_components/gh3/gh3.js"></script>
-	<script type="text/javascript">
-
-		var gitHubUser = new Gh3.User('tomasjj11');
-		var repo = new Gh3.Repository('portfolio', gitHubUser);
-
-		console.log(repo);
-
-		repo.fetch(function (err, res){
-
-			if (err) throw err.message;
-
-			var lastUpdatedDate = new Date(repo.updated_at);
-			$('#portrait').attr('src',repo.owner.avatar_url);
-			$('#lastUpdated').html("<a href='https://github.com/tomasjj11/portfolio/commits/master'>" + lastUpdatedDate.getDate() +'/'+ ('0'+(lastUpdatedDate.getMonth()+1)).slice(-2) +'/'+ lastUpdatedDate.getFullYear()+"</a>");
-
-		});
-
-		window.sr = new scrollReveal();
-
-		var hammer = new Hammer.Manager(document.getElementById('body'));
-		var swipe = new Hammer.Swipe();
-		hammer.add(swipe);
-
-		hammer.on('swipe', function(event){
-			if(event.direction === Hammer.DIRECTION_LEFT) {
-				hideMenu();
-			} else if (event.direction === Hammer.DIRECTION_RIGHT) {
-				showMenu();
-			}
-		});
-
-		$(document).ready(function(){
-			// Display navigation
-			$('.hamburger-menu, .hamburger-menu span').click(function (){
-				showMenu();
-			});
-			$('nav .close, .site-overlay').click(function(e){
-				hideMenu();
-			});
-
-			//Navigation Links
-			$(document).on("scroll", onScroll);
-			$('#menu').find('a').click(function(e){
-				e.preventDefault();
-				$(this).parent('li').toggleClass('active').siblings('li.active').toggleClass('active');
-				hideMenu();
-
-				scrollTo($(this).attr('href'));
-			});
-
-			// Scroll Hint
-			$(window).scroll(function() {
-				$('.scroll-hint').children().css({'opacity': ( 150 - $(window).scrollTop() ) / 100});
-			});
-			$('.scroll-hint').click(function(e){
-				scrollTo('#about');
-			});
-
-		});
-
-		function hideMenu () {
-			if (!$('nav').hasClass('fadeOutLeft')) {
-				$('nav').show().removeClass('fadeInLeft').addClass('fadeOutLeft');
-				$('.site-overlay').fadeOut(500);
-			}
-		}
-		function showMenu () {
-			if (!$('nav').hasClass('fadeInLeft')) {
-				$('nav').show().removeClass('fadeOutLeft').addClass('fadeInLeft');
-				$('.site-overlay').fadeIn(500);
-			}
-		}
-
-		function scrollTo (selector) {
-			if ( selector == '#introduction' ){
-				//#introduction's top is not 0 because it is fixed so we need to make it so!
-				var top = 0;
-			}
-
-			$('html, body').delay(250).animate({
-				scrollTop: typeof top != 'undefined' ? top : $(selector).offset().top
-			}, 500);
-		}
-
-		function onScroll(event){
-			var scrollPos = $(document).scrollTop();
-			$('#content').find('section').each(function () {
-
-				// Get the name of the "active" link.
-				var activeMenuLink = $('#menu').find('li.active').children('a').attr('href').substring(1);
-
-				// If we are looping through the "active" link don't bother
-				if ($(this).attr('id') === activeMenuLink) {
-					return;
-				}
-
-				// If the about section is the active link and gets to certain place in the screen set introduction to active
-				if (activeMenuLink == 'about' && ($('#about').offset().top - $(window).scrollTop()) > window.innerHeight - 100) {
-					$('#menu').find('li').removeClass('active');
-					$('#menu').find('li a[href="#introduction"]').parent('li').addClass('active');
-				}
-				if(($(this).offset().top - $(window).scrollTop()) < (window.innerHeight / 2)) {
-					$('#menu').find('li').removeClass('active');
-					$('#menu').find('li a[href="#'+$(this).attr('id')+'"]').parent('li').addClass('active');
-				}
-
-			});
-		}
-
-	</script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript" src="js/controllers.js"></script>
 
 </body>
 </html>

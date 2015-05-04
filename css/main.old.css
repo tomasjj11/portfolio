@@ -170,7 +170,7 @@ h2{
 .site-overlay{
 	display: none;
 	position:fixed;
-	top:0;
+	top:0;\
 	left:0;
 	height:100vh;
 	width:100%;
@@ -318,15 +318,21 @@ header>h2{
 	color:#3e3e3e;
 	text-align: center;
 }
-#skills .discipline:nth-child(3n+1){background-color: #f8f3f2;}
-#skills .discipline:nth-child(3n+2){background-color: #f5eeec;}
-#skills .discipline:nth-child(3n+3){background-color: #f1e7e5;}
-
-#skills .sub-skills img {
-	display: block;
-	width:100%;
+#skills .skill{
+	margin-bottom:20px;
 }
-
+#skills .skill > span{
+	display: block;
+	width:160px;
+	height:160px;
+	background:url('../images/sub-skills/sprite.png') no-repeat 0 0;
+}
+#skills .skill:nth-child(1) > span{background-position:0 0;}
+#skills .skill:nth-child(2) > span{background-position:-160px 0;}
+#skills .skill:nth-child(3) > span{background-position:-320px 0;}
+#skills .skill:nth-child(4) > span{background-position:-480px 0;}
+#skills .skill:nth-child(5) > span{background-position:-640px 0;}
+#skills .skill:nth-child(6) > span{background-position:-800px 0;}
 
 /***************
 *
