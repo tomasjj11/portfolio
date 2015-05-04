@@ -308,10 +308,14 @@ header>h2{
 }
 
 #about {
+	z-index:5;
 	margin-top:100vh;
 	background-color: #ffffff;
 }
 
+#skills {
+	z-index:10;
+}
 #skills h3{
 	font-family: 'Roboto';
 	font-weight: 100;
