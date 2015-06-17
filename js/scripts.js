@@ -1,8 +1,6 @@
 var gitHubUser = new Gh3.User('tomasjj11');
 var repo = new Gh3.Repository('portfolio', gitHubUser);
 
-//console.log(repo);
-
 repo.fetch(function (err, res){
 
     if (err) throw err.message;
@@ -93,11 +91,11 @@ function onScroll(event){
         }
 
         // If the about section is the active link and gets to certain place in the screen set introduction to active
-        if (activeMenuLink == 'about' && ($('#about').offset().top - $(window).scrollTop()) > window.innerHeight - 100) {
+        if (activeMenuLink == 'about' && ($('#about').offset().top - $(window).scrollTop()) > (window.innerHeight / 3)) {
             $('#menu').find('li').removeClass('active');
             $('#menu').find('li a[href="#introduction"]').parent('li').addClass('active');
         }
-        if(($(this).offset().top - $(window).scrollTop()) < (window.innerHeight / 2)) {
+        if(($(this).offset().top - $(window).scrollTop()) < (window.innerHeight / 3)) {
             $('#menu').find('li').removeClass('active');
             $('#menu').find('li a[href="#'+$(this).attr('id')+'"]').parent('li').addClass('active');
         }
