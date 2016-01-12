@@ -1,0 +1,22 @@
+<!-- The Navigation, this shows on the left for desktops and at the bottom for mobile -->
+<nav class="background-fuscous-grey animated" ng-controller="NavigationController">
+	<div class="row">
+		<div class="col-sm-12">
+			<img id="portrait" alt="Tom's Portrait"/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<ul id="menu">
+				<li ng-repeat="(target, text) in menuItems" ng-class="active == target ? 'active' :''">
+					<a ng-click="menuClick(target)">{{text}}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row git-info ">
+		<div class="col-md-12">
+			<p class="font-silver">Last Updated: <span id="lastUpdated"></span></p>
+		</div>
+	</div>
+</nav>

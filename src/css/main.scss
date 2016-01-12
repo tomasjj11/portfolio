@@ -1,0 +1,382 @@
+/*COLOURS http://coolors.co/7bcfac-8bc471-484846-c2c8d1-000e2e*/
+$turquoise: #7BCFAC;
+$green: #8BC471;
+$fuscous-grey: #484846;
+$tundora: #4E4E4E;
+$silver: #C2C8D1;
+$navy: #000E2E;
+$red: #EF3B38;
+$white: #FFFFFF;
+$imagePath: '../dist/img/';
+
+@each $name, $colour in ("turquoise", $turquoise), ("green", $green), ("fuscous-grey", $fuscous-grey), ("silver", $silver), ("navy", $navy), ("red", $red),("white", $white) {
+  .font-#{$name} {
+    color: $colour;
+  }
+  .background-#{$name} {
+    background-color: $colour
+  }
+}
+
+/***************
+*
+* OVERRIDE STYLES
+*
+***************/
+
+a {
+  color: $green;
+  :hover {
+    color: $turquoise;
+  }
+}
+
+body {
+  font-size: 18px;
+  font-family: 'Roboto'
+}
+
+h1, h2 {
+  position: relative;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family: 'Roboto Slab';
+  font-size: 6em;
+  letter-spacing: 0px;
+  /*line-height: 130px;*/
+}
+
+h2 {
+  font-family: Roboto;
+  font-size: 2.5em;
+}
+
+/***************
+*
+* UTILITY CLASSES
+*
+***************/
+
+.text-centre {
+  text-align: center;
+}
+
+.clear {
+  clear: both;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+/***************
+*
+* MAIN STYLES
+*
+***************/
+html body {
+  margin: 0;
+  position: relative;
+}
+nav {
+  position: fixed;
+  width: 220px;
+  height: 100vh;
+  padding-left: 10px;
+  padding-right: 10px;
+  float: left;
+
+  .container {
+    height: 100%;
+    width: 100%;
+  }
+  #portrait {
+    margin-top: 10px;
+    width: 100%;
+  }
+  ul {
+    list-style: none;
+    padding: 0px;
+
+    li {
+      text-indent: 30px;
+      font-family: 'Roboto';
+      font-size: 1.2em;
+      font-weight: 100;
+      padding: 10px 0;
+      border-bottom: 1px solid $tundora;
+
+      a {
+        text-decoration: none;
+        color: #000;
+        cursor: pointer;
+      }
+      &:last-of-type {
+        border-bottom: 0px;
+      }
+      &.active a, &:hover a {
+        color: #C2C8D1;
+        text-decoration: none;
+      }
+
+      &:nth-child(1) {
+        background: url(#{$imagePath}navigation_icons/intro.png) center left no-repeat;
+      }
+      &:nth-child(2) {
+        background: url(#{$imagePath}navigation_icons/about.png) center left no-repeat;
+      }
+      &:nth-child(3) {
+        background: url(#{$imagePath}navigation_icons/skills.png) center left no-repeat;
+      }
+      &:nth-child(4) {
+        background: url(#{$imagePath}navigation_icons/work.png) center left no-repeat;
+      }
+      &:nth-child(5) {
+        background: url(#{$imagePath}navigation_icons/contact.png) center left no-repeat;
+      }
+    }
+  }
+
+  .git-info {
+    position: absolute;
+    bottom: 0px;
+
+    p {
+      border-top: 1px solid $tundora;
+      padding: 10px 10px 10px 0;
+      font-family: 'Roboto';
+      font-size: .9em;
+      font-weight: 100;
+    }
+  }
+}
+
+main {
+  position: relative;
+  margin-left: 220px;
+}
+
+/*COVER STYLES*/
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+
+  h1 {
+    margin: 20px 0;
+    animation-delay: 0.2s;
+    -webkit-animation-delay: 0.3s;
+    -moz-animation-delay: 0.3s;
+    -o-animation-delay: 0.3s;
+    ms-animation-delay: 0.3s;
+  }
+  h2 {
+    z-index: 3;
+    animation-delay: 1.2s;
+    -webkit-animation-delay: 1.3s;
+    -moz-animation-delay: 1.3s;
+    -o-animation-delay: 1.3s;
+    ms-animation-delay: 1.3s;
+  }
+}
+
+/*PAGE STYLES*/
+#content {
+  display: block;
+  position: relative;
+  z-index: 3;
+
+  section {
+    padding: 100px 0;
+    min-height: 50px;
+
+    &:nth-child(4n+1) {
+      background-color: #F2F4F7
+    }
+    &:nth-child(4n+2) {
+      background-color: #E4E4E4
+    }
+    &:nth-child(4n+4) {
+      background-color: #373737
+    }
+    &:nth-child(4n+4) {
+      background-color: #BBB
+    }
+    &:nth-child(4n+5) {
+      background-color: #E4E4DF
+    }
+  }
+  h2 {
+    margin: 0 0 50px 0;
+  }
+}
+
+#about {
+  z-index: 5;
+  //background-color: #FFF;
+}
+
+#skills {
+  z-index: 10;
+
+  h3 {
+    font-family: 'Roboto';
+    font-weight: 100;
+    color: #3E3E3E;
+    text-align: center;
+  }
+
+  .skill {
+    margin-bottom: 20px;
+
+    &:nth-child(1) > span{
+      background-position: -160px 0;
+    }
+    &:nth-child(2) > span{
+      background-position: -320px 0;
+    }
+    &:nth-child(3) > span{
+      background-position: -640px 0;
+    }
+    &:nth-child(4) > span{
+      background-position: 0 0;
+    }
+    &:nth-child(5) > span{
+      background-position: -480px 0;
+    }
+    &:nth-child(6) > span{
+      background-position: -800px 0;
+    }
+
+    > span {
+      display: block;
+      width: 160px;
+      height: 160px;
+      background: url('../dist/img/sub-skills/sprite.png') no-repeat 0 0;
+      margin: 0 auto;
+    }
+  }
+}
+
+#portfolio {
+  .portfolio-item {
+    height: 400px;
+    position: relative;
+
+    .width-70, .width-30 {
+      width: 70%;
+      transition: all .7s;
+      display: flex;
+      overflow: hidden;
+      float: left;
+      height: 100%;
+    }
+
+    .width-30 {
+      width: 30%;
+    }
+
+    // Glide Portfolio Styles
+    &.glide{
+      .width-30 {
+        background: url('../dist/img/portfolio/glideSmall.svg') no-repeat center center #FFF;
+      }
+      .width-70 {
+        background: url('../dist/img/portfolio/glideLarge.png') no-repeat center -40px #09B1F0;
+        background-size: auto 110%;
+      }
+      &:hover .width-70 {
+        background-size: auto 120%;
+      }
+    }
+
+    // Becky Jo Styles
+    &.becky{
+      .width-30 {
+        background: url('../dist/img/portfolio/beckyjo.jpg') no-repeat center center #FFF;
+        background-size: 100% auto;
+      }
+      .width-70 {
+        background: url('../dist/img/portfolio/beckyLarge.jpg') no-repeat center center #09B1F0;
+        background-size: cover;
+      }
+      &:hover .width-30 {
+        background-size: 110% auto;
+      }
+    }
+
+    .portfolio-overlay {
+      display: none;
+      position: absolute;
+      top: 400px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9;
+      background: rgba(14, 14, 14, .8);
+
+      h2 {
+        margin: 90px 0 50px 0;
+      }
+    }
+
+    &:hover > .portfolio-overlay {
+      display: block;
+      top: 0;
+    }
+  }
+}
+
+
+/***************
+*
+* MEDIA QUERIES
+*
+***************/
+
+@media (max-width: 767px) {
+  /*XS*/
+
+  body {
+    font-size: 14px;
+  }
+
+  header h1 {
+    font-size: 5em;
+    margin-top: 25vh;
+  }
+
+  .hamburger-menu {
+    bottom: 10px;
+    top: auto;
+    left: 10px;
+    width: 35px;
+
+    p {
+      display: none;
+    }
+  }
+  .scroll-hint {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  /*SM*/
+
+}
+
+@media (min-width: 992px) {
+  /*MD*/
+
+}
+
+@media (min-width: 1200px) {
+  /*LG*/
+
+}
