@@ -8,12 +8,13 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<ul id="menu">
-				<li ng-repeat="(target, text) in menuItems" ng-class="active == target ? 'active' :''">
-					<a ng-click="menuClick(target)">{{text}}</a>
+				<li ng-repeat="(target, text) in menuItems" ng-class="menuActive == target ? 'active' :''">
+					<a ng-click="menuClick(target)">{{text}}<span style="display: none">{{target}}</span></a>
 				</li>
 			</ul>
 		</div>
 	</div>
+	{{menuActive}}
 	<div class="row git-info ">
 		<div class="col-md-12">
 			<p class="font-silver">Last Updated: <span id="lastUpdated"></span></p>

@@ -4,15 +4,32 @@ var portfolioApp = angular.module('portfolioApp', []);
 // Setup variables in $rootScope
 portfolioApp.controller('GlobalController', function($rootScope) {
 
+    $rootScope.menuActive = 'introduction';
+
     //Navigation Links
     $(document).on("scroll", onScroll);
 
-    $('#menu li>a').click(function(e){
-        console.log('1');
-        e.preventDefault();
-        $(this).parent('li').toggleClass('active').siblings('li.active').toggleClass('active');
+    function onScroll(event){
+        $('#content').find('section').each(function () {
 
-        $rootScope.scrollTo($(this).attr('href'));
+            // If we are looping through the "active" link don't bother
+            if ($(this).attr('id') === $rootScope.menuActive) {
+                return;
+            }
+
+            // If the about section is the active link and gets to certain place in the screen set introduction to active
+            if ($rootScope.menuActive == 'about' && ($('#about').offset().top - $(window).scrollTop()) > (window.innerHeight / 3)) {
+                $rootScope.$emit('menuUpdated', 'introduction')
+            }
+            if(($(this).offset().top - $(window).scrollTop()) < (window.innerHeight / 3)) {
+                $rootScope.$emit('menuUpdated', $(this).attr('id'))
+            }
+
+        });
+    }
+    $rootScope.$on('menuUpdated',function(itemToActivate, arg){
+        console.log(arg);
+        $rootScope.menuActive = arg;
     });
 
     $rootScope.scrollTo = function(selector) {
@@ -25,31 +42,6 @@ portfolioApp.controller('GlobalController', function($rootScope) {
             scrollTop: typeof top != 'undefined' ? top : $(selector).offset().top
         }, 500);
     };
-
-    function onScroll(event){
-        var scrollPos = $(document).scrollTop();
-        $('#content').find('section').each(function () {
-
-            // Get the name of the "active" link.
-            var activeMenuLink = $('#menu').find('li.active').children('a').attr('href').substring(1);
-
-            // If we are looping through the "active" link don't bother
-            if ($(this).attr('id') === activeMenuLink) {
-                return;
-            }
-
-            // If the about section is the active link and gets to certain place in the screen set introduction to active
-            if (activeMenuLink == 'about' && ($('#about').offset().top - $(window).scrollTop()) > (window.innerHeight / 3)) {
-                $('#menu').find('li').removeClass('active');
-                $('#menu').find('li a[href="#introduction"]').parent('li').addClass('active');
-            }
-            if(($(this).offset().top - $(window).scrollTop()) < (window.innerHeight / 3)) {
-                $('#menu').find('li').removeClass('active');
-                $('#menu').find('li a[href="#'+$(this).attr('id')+'"]').parent('li').addClass('active');
-            }
-
-        });
-    }
 
 });
 
@@ -76,9 +68,8 @@ portfolioApp.controller('NavigationController', function($scope, $rootScope){
         contact: 'Contact me',
     };
 
-    $scope.active = 'introduction';
     $scope.menuClick = function(item){
-        $scope.active = item;
+        $rootScope.menuActive = item;
         $rootScope.scrollTo('#'+item);
     };
 });
