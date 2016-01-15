@@ -310,6 +310,20 @@ header {
       }
     }
 
+    // JB Total Fitness Portfolio Styles
+    &.jbTotalFitness{
+      .width-30 {
+        background: url('../dist/img/portfolio/jbTotalFitnessSmall.png') no-repeat center center #2B2B2B;
+      }
+      .width-70 {
+        background: url('../dist/img/portfolio/jbTotalFitnessLarge.jpg') no-repeat center center #09B1F0;
+        background-size: auto 110%;
+      }
+      &:hover .width-70 {
+        background-size: auto 120%;
+      }
+    }
+
     .portfolio-overlay {
       display: none;
       position: absolute;

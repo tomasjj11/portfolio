@@ -4,34 +4,6 @@ var portfolioApp = angular.module('portfolioApp', []);
 // Setup variables in $rootScope
 portfolioApp.controller('GlobalController', function($rootScope) {
 
-    $rootScope.menuActive = 'introduction';
-
-    //Navigation Links
-    $(document).on("scroll", onScroll);
-
-    function onScroll(event){
-        $('#content').find('section').each(function () {
-
-            // If we are looping through the "active" link don't bother
-            if ($(this).attr('id') === $rootScope.menuActive) {
-                return;
-            }
-
-            // If the about section is the active link and gets to certain place in the screen set introduction to active
-            if ($rootScope.menuActive == 'about' && ($('#about').offset().top - $(window).scrollTop()) > (window.innerHeight / 3)) {
-                $rootScope.$emit('menuUpdated', 'introduction')
-            }
-            if(($(this).offset().top - $(window).scrollTop()) < (window.innerHeight / 3)) {
-                $rootScope.$emit('menuUpdated', $(this).attr('id'))
-            }
-
-        });
-    }
-    $rootScope.$on('menuUpdated',function(itemToActivate, arg){
-        console.log(arg);
-        $rootScope.menuActive = arg;
-    });
-
     $rootScope.scrollTo = function(selector) {
         if ( selector == '#introduction' ){
             //#introduction's top is not 0 because it is fixed so we need to make it so!
@@ -42,6 +14,19 @@ portfolioApp.controller('GlobalController', function($rootScope) {
             scrollTop: typeof top != 'undefined' ? top : $(selector).offset().top
         }, 500);
     };
+    // On load make sure we are back at the top of the page
+    $rootScope.scrollTo('#introduction');
+
+    window.scrollReveal = ScrollReveal().reveal('.reveal', {
+        origin      : 'bottom',
+        duration    : 1000,
+        delay       : 450,
+        useDelay    : 'always',
+        viewFactor  : 0.6,
+    });
+    scrollReveal.reveal('.reveal.reveal-5', {delay:500}).reveal('.reveal.reveal-6', {delay:600})
+        .reveal('.reveal.reveal-7', {delay:700}).reveal('.reveal.reveal-8', {delay:800})
+        .reveal('.reveal.reveal-9', {delay:900}).reveal('.reveal.reveal-10', {delay:1000});
 
 });
 
@@ -69,9 +54,35 @@ portfolioApp.controller('NavigationController', function($scope, $rootScope){
     };
 
     $scope.menuClick = function(item){
-        $rootScope.menuActive = item;
+        $scope.menuActive = item;
         $rootScope.scrollTo('#'+item);
     };
+
+    $scope.menuActive = 'introduction';
+
+    //Navigation Links
+    $(document).on("scroll", function(event){
+        $('#content').find('section').each(function () {
+            var id = $(this).attr('id');
+
+            // If we are looping through the "active" link don't bother
+            if (id === $scope.menuActive) {
+                return;
+            }
+
+            // If the about section is the active link and gets to certain place in the screen set introduction to active
+            if ($scope.menuActive == 'about' && ($('#about').offset().top - $(window).scrollTop()) > (window.innerHeight / 3)) {
+                $scope.$apply(function () {
+                    $scope.menuActive = 'introduction';
+                });
+            }
+            if(($(this).offset().top - $(window).scrollTop()) < (window.innerHeight / 3)) {
+                $scope.$apply(function () {
+                    $scope.menuActive = id;
+                });
+            }
+        });
+    });
 });
 
 portfolioApp.controller('IntroductionController', function($scope){
