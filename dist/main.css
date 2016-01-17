@@ -129,11 +129,13 @@ header h2 { z-index: 3; animation-delay: 1.2s; -webkit-animation-delay: 1.3s; -m
 *
 ***************/
 @media (max-width: 767px) { /*XS*/
-  body { font-size: 14px; }
-  header h1 { font-size: 5em; margin-top: 25vh; }
-  .hamburger-menu { bottom: 10px; top: auto; left: 10px; width: 35px; }
-  .hamburger-menu p { display: none; }
-  .scroll-hint { display: none; } }
+  body { font-size: 14px; position: relative; }
+  nav { position: fixed; height: 60px; width: 100%; bottom: 0; left: 0; z-index: 50; }
+  nav #menu { position: relative; }
+  nav #menu li { display: inline-block; border: 0; height: 60px; width: 20%; background-position: center center; background-size: 25px 25px; padding: 0; cursor: pointer; }
+  nav #menu li:hover { background-color: #C2C8D1; }
+  nav #menu li a { display: none; }
+  main { margin-left: 0; } }
 @media (min-width: 768px) { /*SM*/ }
 @media (min-width: 992px) { /*MD*/ }
 @media (min-width: 1200px) { /*LG*/ }

@@ -358,25 +358,41 @@ header {
 
   body {
     font-size: 14px;
+    position: relative;
   }
 
-  header h1 {
-    font-size: 5em;
-    margin-top: 25vh;
-  }
+  nav {
+    position: fixed;
+    height:60px;
+    width:100%;
+    bottom:0;
+    left:0;
+    z-index:50;
 
-  .hamburger-menu {
-    bottom: 10px;
-    top: auto;
-    left: 10px;
-    width: 35px;
+    #menu {
+      position: relative;
+      li {
+        display: inline-block;
+        border: 0;
+        height: 60px;
+        width:20%;
+        background-position:center center;
+        background-size:25px 25px;
+        padding:0;
+        cursor: pointer;
 
-    p {
-      display: none;
+        &:hover {
+          background-color:$silver;
+        }
+        a {
+          display:none;
+        }
+      }
     }
   }
-  .scroll-hint {
-    display: none;
+
+  main {
+    margin-left:0;
   }
 }
 
