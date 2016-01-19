@@ -88,6 +88,8 @@ portfolioApp.controller('NavigationController', function($scope, $rootScope){
 portfolioApp.controller('IntroductionController', function($scope){
     // Trianglify Intro background
     function addTriangleTo(target) {
+
+        console.log(dimensions);
         var dimensions = target.getClientRects()[0];
         var pattern = Trianglify({
             width: dimensions.width,
@@ -99,4 +101,6 @@ portfolioApp.controller('IntroductionController', function($scope){
         target.style['background-image'] = 'url(' + pattern.png() + ')';
     }
     addTriangleTo(document.getElementById('introduction'));
+
+
 });
