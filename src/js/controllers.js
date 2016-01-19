@@ -88,8 +88,6 @@ portfolioApp.controller('NavigationController', function($scope, $rootScope){
 portfolioApp.controller('IntroductionController', function($scope){
     // Trianglify Intro background
     function addTriangleTo(target) {
-
-        console.log(dimensions);
         var dimensions = target.getClientRects()[0];
         var pattern = Trianglify({
             width: dimensions.width,
@@ -102,5 +100,12 @@ portfolioApp.controller('IntroductionController', function($scope){
     }
     addTriangleTo(document.getElementById('introduction'));
 
-
+    $("span.role").typed({
+        strings: ['backend engineer','frontend engineer','web designer','web developer.'],
+        typeSpeed: 70,
+        startDelay: 2000,
+        backSpeed: 10,
+        stopNum: 3
+        //stringsElement: $('h2 div#typed-strings')
+    });
 });

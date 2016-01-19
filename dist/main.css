@@ -81,8 +81,8 @@ main { position: relative; margin-left: 220px; }
 
 /*COVER STYLES*/
 header { display: flex; align-items: center; justify-content: center; position: relative; height: 100vh; width: 100%; }
-header h1 { margin: 20px 0; animation-delay: 0.2s; -webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; -o-animation-delay: 0.3s; ms-animation-delay: 0.3s; }
-header h2 { z-index: 3; animation-delay: 1.2s; -webkit-animation-delay: 1.3s; -moz-animation-delay: 1.3s; -o-animation-delay: 1.3s; ms-animation-delay: 1.3s; }
+header h1 { margin: 20px 0; animation-delay: 0.2s; -webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; -o-animation-delay: 0.2s; ms-animation-delay: 0.2s; }
+header h2 { z-index: 3; animation-delay: 1s; -webkit-animation-delay: 1s; -moz-animation-delay: 1s; -o-animation-delay: 1s; ms-animation-delay: 1s; }
 
 /*PAGE STYLES*/
 #content { display: block; position: relative; z-index: 3; }
@@ -130,7 +130,7 @@ header h2 { z-index: 3; animation-delay: 1.2s; -webkit-animation-delay: 1.3s; -m
 ***************/
 @media (max-width: 767px) { /*XS*/
   body { font-size: 14px; position: relative; }
-  nav { position: fixed; height: 60px; width: 100%; bottom: 0; left: 0; z-index: 50; box-shadow: 0px -2px 12px 4px rgba(0, 0, 0, 0.5); }
+  nav { position: fixed; height: 60px; width: 100%; bottom: 0; left: 0; z-index: 50; box-shadow: 0px -2px 4px 2px rgba(0, 0, 0, 0.3); }
   nav #menu { position: relative; }
   nav #menu li { display: inline-block; border: 0; height: 60px; width: 20%; background-position: center center; background-size: 25px 25px; padding: 0; cursor: pointer; border-left: 1px solid #4E4E4E; }
   nav #menu li:first-of-type { border-left: 0; }
@@ -140,5 +140,16 @@ header h2 { z-index: 3; animation-delay: 1.2s; -webkit-animation-delay: 1.3s; -m
 @media (min-width: 768px) { /*SM*/ }
 @media (min-width: 992px) { /*MD*/ }
 @media (min-width: 1200px) { /*LG*/ }
+.typed-cursor { opacity: 1; -webkit-animation: blink 1s infinite; -moz-animation: blink 1s infinite; animation: blink 1s infinite; }
+
+@keyframes blink { 0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; } }
+@-webkit-keyframes blink { 0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; } }
+@-moz-keyframes blink { 0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; } }
 
 /*# sourceMappingURL=main.css.map */
