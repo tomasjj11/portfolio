@@ -40,8 +40,13 @@ portfolioApp.controller('NavigationController', function($scope, $rootScope){
         if (err) throw err.message;
 
         var lastUpdatedDate = new Date(repo.updated_at);
-        $('#portrait').attr('src',repo.owner.avatar_url);
-        $('#lastUpdated').html("<a href='https://github.com/tomasjj11/portfolio/commits/master'>" + lastUpdatedDate.getDate() +'/'+ ('0'+(lastUpdatedDate.getMonth()+1)).slice(-2) +'/'+ lastUpdatedDate.getFullYear()+"</a>");
+        $scope.$apply( function() {
+            $scope.portraitUrl = repo.owner.avatar_url;
+            $scope.repo = {
+                fullPath : 'https://github.com/tomasjj11/portfolio/commits/master',
+                updatedDate : lastUpdatedDate
+            };
+        });
 
     });
 
@@ -101,7 +106,7 @@ portfolioApp.controller('IntroductionController', function($scope){
     addTriangleTo(document.getElementById('introduction'));
 
     $("span.role").typed({
-        strings: ['backend engineer','frontend engineer','web designer','web developer.'],
+        strings: ['software engineer','web designer','web developer.'],
         typeSpeed: 70,
         startDelay: 2000,
         backSpeed: 10,

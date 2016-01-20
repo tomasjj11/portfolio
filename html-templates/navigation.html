@@ -1,8 +1,8 @@
 <!-- The Navigation, this shows on the left for desktops and at the bottom for mobile -->
-<nav class="background-fuscous-grey animated" ng-controller="NavigationController">
+<nav class="background-boulder animated" ng-controller="NavigationController">
 	<div class="row hidden-xs">
 		<div class="col-sm-12">
-			<img id="portrait" alt="Tom's Portrait"/>
+			<img id="portrait" alt="Tom's Portrait" ng-src="{{portraitUrl}}"/>
 		</div>
 	</div>
 	<div class="row">
@@ -16,7 +16,7 @@
 	</div>
 	<div class="row git-info hidden-xs">
 		<div class="col-md-12">
-			<p class="font-silver">Last Updated: <span id="lastUpdated"></span></p>
+			<p class="font-silver">Last Updated: <span id="lastUpdated"><a ng-href="{{repo.fullPath}}">{{repo.updatedDate.getDate()}}/{{('0'+(repo.updatedDate.getMonth()+1)).slice(-2)}}/{{repo.updatedDate.getFullYear()}}</a></span></p>
 		</div>
 	</div>
 </nav>

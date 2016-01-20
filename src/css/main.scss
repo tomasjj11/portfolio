@@ -2,6 +2,7 @@
 $turquoise: #7BCFAC;
 $green: #8BC471;
 $fuscous-grey: #484846;
+$boulder : #777777;
 $tundora: #4E4E4E;
 $silver: #C2C8D1;
 $navy: #000E2E;
@@ -9,7 +10,7 @@ $red: #EF3B38;
 $white: #FFFFFF;
 $imagePath: '../dist/img/';
 
-@each $name, $colour in ("turquoise", $turquoise), ("green", $green), ("fuscous-grey", $fuscous-grey), ("silver", $silver), ("navy", $navy), ("red", $red),("white", $white) {
+@each $name, $colour in ("turquoise", $turquoise), ("green", $green), ("fuscous-grey", $fuscous-grey), ("boulder", $boulder), ("silver", $silver), ("navy", $navy), ("red", $red),("white", $white) {
   .font-#{$name} {
     color: $colour;
   }
@@ -398,11 +399,18 @@ header {
     }
   }
 
-  main {
-    margin-left:0;
+  main { margin-left:0; }
+  #portfolio {
+    .portfolio-item {
+      .width-70 {width: 100%}
+      .width-30 {display:none}
 
-    #content{
-      header h2 span{
+      .portfolio-overlay {
+        display:block;
+        top:0;
+        h2 {
+          margin-top: 50px
+        }
       }
     }
   }

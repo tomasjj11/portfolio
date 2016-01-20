@@ -11,6 +11,10 @@
 
 .background-fuscous-grey { background-color: #484846; }
 
+.font-boulder { color: #777777; }
+
+.background-boulder { background-color: #777777; }
+
 .font-silver { color: #C2C8D1; }
 
 .background-silver { background-color: #C2C8D1; }
@@ -136,7 +140,11 @@ header h2 { z-index: 3; animation-delay: 1s; -webkit-animation-delay: 1s; -moz-a
   nav #menu li:first-of-type { border-left: 0; }
   nav #menu li:hover { background-color: #C2C8D1; }
   nav #menu li a { display: none; }
-  main { margin-left: 0; } }
+  main { margin-left: 0; }
+  #portfolio .portfolio-item .width-70 { width: 100%; }
+  #portfolio .portfolio-item .width-30 { display: none; }
+  #portfolio .portfolio-item .portfolio-overlay { display: block; top: 0; }
+  #portfolio .portfolio-item .portfolio-overlay h2 { margin-top: 50px; } }
 @media (min-width: 768px) { /*SM*/ }
 @media (min-width: 992px) { /*MD*/ }
 @media (min-width: 1200px) { /*LG*/ }
