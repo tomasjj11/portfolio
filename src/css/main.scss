@@ -347,6 +347,17 @@ header {
   }
 }
 
+#contact{
+  input, textarea {
+    &.ng-dirty.ng-invalid {
+      border-color:red;
+    }
+  }
+  button.success {
+    backgroun
+  }
+}
+
 
 /***************
 *

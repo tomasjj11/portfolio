@@ -114,3 +114,55 @@ portfolioApp.controller('IntroductionController', function($scope){
         //stringsElement: $('h2 div#typed-strings')
     });
 });
+
+portfolioApp.controller('ContactController', function($scope, $http){
+    $scope.contact = {
+        'name': {
+            'placeholder': 'Name *',
+            'value': ''
+        },
+        'email': {
+            'placeholder': 'E-mail Address *',
+            'value': ''
+        },
+        'phone': {
+            'placeholder': 'Telephone Number',
+            'value': ''
+        },
+        'body': {
+            'placeholder': 'Message *',
+            'value': ''
+        },
+    };
+
+    $scope.sendContact = function () {
+
+        if($scope.contactForm.gotcha){
+            return;
+        }
+
+        $http({
+            method: 'POST',
+            url: '//formspree.io/tomasjj11@gmail.com',
+            data: $.param({
+                _replyto: $scope.contact.email.value,
+                _subject: 'Portfolio Contact form submission from ' + $scope.contact.name.value,
+                message: $scope.contact.body.value,
+                name: $scope.contact.name.value,
+                email: $scope.contact.email.value,
+                phone: $scope.contact.phone.value
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(
+            function successCallback(success){
+                $scope.contactForm.success = true;
+            },
+            function errorCallback(error){
+                $scope.contactForm.error = error.statusText;
+            }
+        );
+    };
+});
