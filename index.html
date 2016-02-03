@@ -158,7 +158,7 @@
 						</div>
 					</div>
 					<form name="contactForm">
-						<div class="form-group" ng-class="{has-success: (contactForm.name.$valid && contactForm.name.$dirty), has-error: (contactForm.name.$invalid && contactForm.name.$dirty)">
+						<div class="form-group" ng-class="{'has-success': (contactForm.name.$valid && contactForm.name.$dirty), 'has-error': (contactForm.name.$invalid && contactForm.name.$dirty)}">
 							<div class="row">
 								<div class="col-sm-12 col-md-6">
 									<input class="form-control" type="text" name="name" ng-model="contact.name.value" ng-placeholder="contact.name.placeholder" ng-pattern="/^[a-zA-Z]{1}[a-zA-Z-' ]+$/" required>
@@ -168,7 +168,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group" ng-class="{'has-success': (contactForm.email.$valid && contactForm.email.$dirty), 'has-error': (contactForm.email.$invalid && contactForm.email.$dirty)}">
 							<div class="row">
 								<div class="col-sm-12 col-md-6">
 									<input class="form-control" type="email" name="email" ng-model="contact.email.value" ng-placeholder="contact.email.placeholder" required>
@@ -178,7 +178,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group" class="form-group" ng-class="{'has-success': (contactForm.phone.$valid && contactForm.phone.$dirty), 'has-error': (contactForm.phone.$invalid && contactForm.phone.$dirty)}">
 							<div class="row">
 								<div class="col-sm-12 col-md-6">
 									<input class="form-control" type="tel" name="phone" ng-model="contact.phone.value" ng-placeholder="contact.phone.placeholder" maxlength="15" ng-pattern="/^(?:(?:\(?(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?(?:\(?0\)?[\s-]?)?)|(?:\(?0))(?:(?:\d{5}\)?[\s-]?\d{4,5})|(?:\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3}))|(?:\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4})|(?:\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}))(?:[\s-]?(?:x|ext\.?|\#)\d{3,4})?$/">
@@ -188,7 +188,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group" class="form-group" ng-class="{'has-success': (contactForm.body.$valid && contactForm.body.$dirty), 'has-error': (contactForm.body.$invalid && contactForm.body.$dirty)}">
 							<div class="row">
 								<div class="col-sm-12 col-md-6">
 									<textarea class="form-control" name="body" ng-model="contact.body.value" ng-placeholder="contact.body.placeholder" required></textarea>

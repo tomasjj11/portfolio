@@ -127,8 +127,6 @@ header h2 { z-index: 3; animation-delay: 1s; -webkit-animation-delay: 1s; -moz-a
 #portfolio .portfolio-item .portfolio-overlay h2 { margin: 90px 0 50px 0; }
 #portfolio .portfolio-item:hover > .portfolio-overlay { display: block; top: 0; }
 
-#contact input.ng-dirty.ng-invalid, #contact textarea.ng-dirty.ng-invalid { border-color: red; }
-
 /***************
 *
 * MEDIA QUERIES
