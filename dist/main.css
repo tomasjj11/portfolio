@@ -127,6 +127,13 @@ header h2 { z-index: 3; animation-delay: 1s; -webkit-animation-delay: 1s; -moz-a
 #portfolio .portfolio-item .portfolio-overlay h2 { margin: 90px 0 50px 0; }
 #portfolio .portfolio-item:hover > .portfolio-overlay { display: block; top: 0; }
 
+#contact .contact-type { margin-bottom: 20px; }
+#contact .contact-type h3 { position: relative; }
+#contact .contact-type h3 span { margin-right: 10px; }
+#contact .contact-type h3::after { content: ""; position: absolute; bottom: 0; left: 0; height: 1px; width: 100%; background: #444; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+1,000000+26,000000+26,000000+76,000000+76,000000+100&0+0,1+26,1+76,0+100 */ background: -moz-linear-gradient(left, transparent 0%, rgba(0, 0, 0, 0.04) 1%, black 26%, black 76%, transparent 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(left, transparent 0%, rgba(0, 0, 0, 0.04) 1%, black 26%, black 76%, transparent 100%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.04) 1%, black 26%, black 76%, transparent 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */ }
+#contact .contact-type a { font-size: 2em; }
+#contact textarea { min-height: 200px; }
+
 /***************
 *
 * MEDIA QUERIES

@@ -1,5 +1,5 @@
 // App Config. Instantiate App module.
-var portfolioApp = angular.module('portfolioApp', []);
+var portfolioApp = angular.module('portfolioApp', ['jp.ng-bs-animated-button']);
 
 // Setup variables in $rootScope
 portfolioApp.controller('GlobalController', function($rootScope) {
@@ -116,6 +116,27 @@ portfolioApp.controller('IntroductionController', function($scope){
 });
 
 portfolioApp.controller('ContactController', function($scope, $http){
+
+    $scope.contactForm = {};
+    // ng-bs-animated-button - https://github.com/jeremypeters/ng-bs-animated-button
+    // Required - set to true on submission
+    $scope.isSubmitting = null;
+
+    // Required - set to 'success' or 'error' on success/failure
+    $scope.result = null;
+
+    // Optional
+    $scope.options = {
+        buttonSizeClass: 'btn-lg',
+        buttonSubmittingClass: 'btn-default',
+        buttonSuccessClass: 'btn-success',
+        buttonDefaultText: 'Send',
+        buttonSubmittingText: 'Sending',
+        buttonSuccessText: 'Sent',
+        buttonErrorText: 'Failed',
+        formIsInvalid: $scope.contactForm.$invalid
+    };
+
     $scope.contact = {
         'name': {
             'placeholder': 'Name *',
@@ -132,7 +153,7 @@ portfolioApp.controller('ContactController', function($scope, $http){
         'body': {
             'placeholder': 'Message *',
             'value': ''
-        },
+        }
     };
 
     $scope.sendContact = function () {
@@ -141,16 +162,18 @@ portfolioApp.controller('ContactController', function($scope, $http){
             return;
         }
 
+        $scope.isSubmitting = true;
+
         $http({
             method: 'POST',
             url: '//formspree.io/tomasjj11@gmail.com',
             data: $.param({
                 _replyto: $scope.contact.email.value,
                 _subject: 'Portfolio Contact form submission from ' + $scope.contact.name.value,
-                message: $scope.contact.body.value,
                 name: $scope.contact.name.value,
                 email: $scope.contact.email.value,
-                phone: $scope.contact.phone.value
+                phone: $scope.contact.phone.value,
+                message: $scope.contact.body.value
             }),
             headers: {
                 'Accept': 'application/json',
@@ -158,9 +181,11 @@ portfolioApp.controller('ContactController', function($scope, $http){
             }
         }).then(
             function successCallback(success){
+                $scope.result = 'success';
                 $scope.contactForm.success = true;
             },
             function errorCallback(error){
+                $scope.result = 'error';
                 $scope.contactForm.error = error.statusText;
             }
         );

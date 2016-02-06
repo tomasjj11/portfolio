@@ -347,16 +347,38 @@ header {
   }
 }
 
-//#contact{
-//  input, textarea {
-//    &.ng-dirty.ng-invalid {
-//      border-color:red;
-//    }
-//  }
-//  button.success {
-//    backgroun
-//  }
-//}
+#contact{
+  .contact-type {
+    margin-bottom:20px;
+    h3{
+      position:relative;
+      span {
+        margin-right:10px;
+      }
+    }
+    h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background: #444;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+1,000000+26,000000+26,000000+76,000000+76,000000+100&0+0,1+26,1+76,0+100 */
+      background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.04) 1%, rgba(0,0,0,1) 26%, rgba(0,0,0,1) 76%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.04) 1%,rgba(0,0,0,1) 26%,rgba(0,0,0,1) 76%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.04) 1%,rgba(0,0,0,1) 26%,rgba(0,0,0,1) 76%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+
+    }
+    a{
+      font-size:2em;
+    }
+  }
+  textarea {
+    min-height:200px;
+  }
+}
 
 
 /***************

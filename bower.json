@@ -23,6 +23,7 @@
     "animate.css": "~3.2.0",
     "angularjs": "~1.4.7",
     "trianglify": "~0.3.1",
-    "scroll-reveal": "^3"
+    "scroll-reveal": "^3",
+    "ng-bs-animated-button": "~2.0.3"
   }
 }

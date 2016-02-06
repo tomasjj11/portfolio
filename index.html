@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html ng-app="portfolioApp" ng-controller="GlobalController">
 <head lang="en">
+	<!--
+		This is the personal Web Development portfolio of Thomas Jordan, UK
+		Displayed on thomasjordan.io
+
+		Built Using PHPStorm - https://www.jetbrains.com/phpstorm/
+
+		Libraries Used:
+			Angular JS - https://angularjs.org/
+			Bootstrap - http://getbootstrap.com/
+			Scroll Reveal JS - https://scrollrevealjs.org/
+			Animate CSS - https://daneden.github.io/animate.css/
+			Trianglify - http://qrohlf.com/trianglify/
+			Typed JS - http://www.mattboldt.com/demos/typed-js/
+	-->
 	<meta charset="UTF-8">
 	<title>Tom Jordan | Website Developer & Software Engineer</title>
 	<link rel="icon" type="image/png" href="src/img/favicon.png"/>
 
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="src/lib/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="src/lib/ng-bs-animated-button/ng-bs-animated-button.css"/>
 	<link href="src/lib/animate.css/animate.min.css" type="text/css" rel="stylesheet"/>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:100,400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="dist/main.css"/>
@@ -157,59 +172,65 @@
 							<h2 class="font-fuscous-grey text-centre">Get in contact</h2>
 						</div>
 					</div>
-					<form name="contactForm">
-						<div class="form-group" ng-class="{'has-success': (contactForm.name.$valid && contactForm.name.$dirty), 'has-error': (contactForm.name.$invalid && contactForm.name.$dirty)}">
-							<div class="row">
-								<div class="col-sm-12 col-md-6">
-									<input class="form-control" type="text" name="name" ng-model="contact.name.value" ng-placeholder="contact.name.placeholder" ng-pattern="/^[a-zA-Z]{1}[a-zA-Z-' ]+$/" required>
-								</div>
-								<div class="col-sm-12 col-md-6" ng-show="contactForm.name.$invalid && contactForm.name.$dirty">
-									<p>The name field looks like it contains incorrect characters.</p>
-								</div>
-							</div>
+					<div class="row contact-type">
+						<div class="col-md-offset-4 col-md-4 col-sm-12 text-centre">
+							<h3><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>E-mail me on</h3>
+							<email></email>
 						</div>
-						<div class="form-group" ng-class="{'has-success': (contactForm.email.$valid && contactForm.email.$dirty), 'has-error': (contactForm.email.$invalid && contactForm.email.$dirty)}">
-							<div class="row">
-								<div class="col-sm-12 col-md-6">
-									<input class="form-control" type="email" name="email" ng-model="contact.email.value" ng-placeholder="contact.email.placeholder" required>
+					</div>
+					<div class="row contact-type">
+						<div class="col-md-offset-4 col-md-4 col-sm-12">
+							<h3 class="text-center">Send me a message</h3>
+							<form name="contactForm" ng-submit="sendContact()">
+								<div class="form-group" ng-class="{'has-success': (contactForm.name.$valid && contactForm.name.$dirty), 'has-error': (contactForm.name.$invalid && contactForm.name.$dirty)}">
+									<div class="row">
+										<div class="col-sm-12">
+											<input class="form-control" type="text" name="name" ng-model="contact.name.value" ng-placeholder="contact.name.placeholder" ng-pattern="/^[a-zA-Z]{1}[a-zA-Z-' ]+$/" required>
+											<p ng-show="contactForm.name.$invalid && contactForm.name.$dirty">The name field looks like it contains incorrect characters.</p>
+										</div>
+									</div>
 								</div>
-								<div class="col-sm-12 col-md-6" ng-show="contactForm.email.$invalid && contactForm.email.$dirty">
-									<p>Please supply a valid e-mail address.</p>
+								<div class="form-group" ng-class="{'has-success': (contactForm.email.$valid && contactForm.email.$dirty), 'has-error': (contactForm.email.$invalid && contactForm.email.$dirty)}">
+									<div class="row">
+										<div class="col-sm-12">
+											<input class="form-control" type="email" name="email" ng-model="contact.email.value" ng-placeholder="contact.email.placeholder" required>
+											<p ng-show="contactForm.email.$invalid && contactForm.email.$dirty">Please supply a valid e-mail address.</p>
+										</div>
+									</div>
 								</div>
-							</div>
+								<div class="form-group" class="form-group" ng-class="{'has-success': (contactForm.phone.$valid && contactForm.phone.$dirty), 'has-error': (contactForm.phone.$invalid && contactForm.phone.$dirty)}">
+									<div class="row">
+										<div class="col-sm-12">
+											<input class="form-control" type="tel" name="phone" ng-model="contact.phone.value" ng-placeholder="contact.phone.placeholder" maxlength="15" ng-pattern="/^(?:(?:\(?(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?(?:\(?0\)?[\s-]?)?)|(?:\(?0))(?:(?:\d{5}\)?[\s-]?\d{4,5})|(?:\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3}))|(?:\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4})|(?:\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}))(?:[\s-]?(?:x|ext\.?|\#)\d{3,4})?$/">
+											<p ng-show="contactForm.phone.$invalid && contactForm.phone.$dirty">Please supply a valid UK telephone number.</p>
+										</div>
+									</div>
+								</div>
+								<div class="form-group" class="form-group" ng-class="{'has-success': (contactForm.body.$valid && contactForm.body.$dirty), 'has-error': (contactForm.body.$invalid && contactForm.body.$dirty)}">
+									<div class="row">
+										<div class="col-sm-12">
+											<textarea class="form-control" name="body" ng-model="contact.body.value" ng-placeholder="contact.body.placeholder" required></textarea>
+											<p ng-show="contactForm.body.$invalid && contactForm.body.$dirty">Please let me know what you would like to contact me about.</p>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="form-group" ng-disabled="contactForm.$invalid">
+												<jp-ng-bs-animated-button is-submitting="isSubmitting" result="result" options="options" isInvalid="contactForm.$invalid"></jp-ng-bs-animated-button>
+											</div>
+											<!--<button ng-click="sendContact()" class="btn" ng-disabled="contactForm.$invalid || contactForm.success" ng-class="contactForm.success ? 'btn-success' : 'btn-primary'">-->
+												<!--<span ng-hide="contactForm.success">Send</span>-->
+												<!--<span ng-show="contactForm.success">Sent</span>-->
+											<!--</button>-->
+										</div>
+									</div>
+								</div>
+								<input type="text" name="_gotcha" ng-model="gotcha" style="display:none" />
+							</form>
 						</div>
-						<div class="form-group" class="form-group" ng-class="{'has-success': (contactForm.phone.$valid && contactForm.phone.$dirty), 'has-error': (contactForm.phone.$invalid && contactForm.phone.$dirty)}">
-							<div class="row">
-								<div class="col-sm-12 col-md-6">
-									<input class="form-control" type="tel" name="phone" ng-model="contact.phone.value" ng-placeholder="contact.phone.placeholder" maxlength="15" ng-pattern="/^(?:(?:\(?(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?(?:\(?0\)?[\s-]?)?)|(?:\(?0))(?:(?:\d{5}\)?[\s-]?\d{4,5})|(?:\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3}))|(?:\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4})|(?:\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}))(?:[\s-]?(?:x|ext\.?|\#)\d{3,4})?$/">
-								</div>
-								<div class="col-sm-12 col-md-6" ng-show="contactForm.phone.$invalid && contactForm.phone.$dirty">
-									<p>Please supply a valid UK telephone number.</p>
-								</div>
-							</div>
-						</div>
-						<div class="form-group" class="form-group" ng-class="{'has-success': (contactForm.body.$valid && contactForm.body.$dirty), 'has-error': (contactForm.body.$invalid && contactForm.body.$dirty)}">
-							<div class="row">
-								<div class="col-sm-12 col-md-6">
-									<textarea class="form-control" name="body" ng-model="contact.body.value" ng-placeholder="contact.body.placeholder" required></textarea>
-								</div>
-								<div class="col-sm-12 col-md-6" ng-show="contactForm.body.$invalid && contactForm.body.$dirty">
-									<p>Please let me know what you would like to contact me about.</p>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="row">
-								<div class="col-sm-12 col-md-6">
-									<button ng-click="sendContact()" class="btn" ng-disabled="contactForm.$invalid || contactForm.success" ng-class="contactForm.success ? 'btn-success' : 'btn-primary'">
-										<span ng-hide="contactForm.success">Send</span>
-										<span ng-show="contactForm.success">Sent</span>
-									</button>
-								</div>
-							</div>
-						</div>
-						<input type="text" name="_gotcha" ng-model="gotcha" style="display:none" />
-					</form>
+					</div>
 				</div>
 			</section>
 		</div>
@@ -222,6 +243,7 @@
 <script type="text/javascript" src="src/lib/trianglify/dist/trianglify.min.js"></script>
 <script type="text/javascript" src="src/lib/scroll-reveal/dist/scrollreveal.min.js"></script>
 <script type="text/javascript" src="src/lib/typed.js/dist/typed.min.js"></script>
+<script type="text/javascript" src="src/lib/ng-bs-animated-button/ng-bs-animated-button.js"></script>
 <script type="text/javascript" src="src/js/controllers.js"></script>
 <script type="text/javascript" src="src/js/directives.js"></script>
 </html>
