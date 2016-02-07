@@ -13,6 +13,9 @@ portfolioApp.controller('GlobalController', function($rootScope) {
         $('html, body').delay(250).animate({
             scrollTop: typeof top != 'undefined' ? top : $(selector).offset().top
         }, 500);
+        setTimeout(function(){
+            $rootScope.stopMenuChangeOnScroll = false;
+        }, 1000);
     };
     // On load make sure we are back at the top of the page
     $rootScope.scrollTo('#introduction');
@@ -60,6 +63,14 @@ portfolioApp.controller('NavigationController', function($scope, $rootScope){
 
     $scope.menuClick = function(item){
         $scope.menuActive = item;
+        $rootScope.stopMenuChangeOnScroll = true;
+
+        ga('send', {
+            hitType:'pageview',
+            title: $scope.menuItems[item],
+            page:item
+        });
+
         $rootScope.scrollTo('#'+item);
     };
 
@@ -67,6 +78,9 @@ portfolioApp.controller('NavigationController', function($scope, $rootScope){
 
     //Navigation Links
     $(document).on("scroll", function(event){
+        if($rootScope.stopMenuChangeOnScroll){
+            return;
+        }
         $('#content').find('section').each(function () {
             var id = $(this).attr('id');
 
