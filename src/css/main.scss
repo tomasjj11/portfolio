@@ -1,12 +1,12 @@
 /*COLOURS http://coolors.co/7bcfac-8bc471-484846-c2c8d1-000e2e*/
 $turquoise: #7BCFAC;
-$green: #8BC471;
+$green: #6FA257;
 $fuscous-grey: #484846;
 $boulder : #777777;
 $tundora: #4E4E4E;
 $silver: #C2C8D1;
 $navy: #000E2E;
-$red: #EF3B38;
+$red: #CA0C09;
 $white: #FFFFFF;
 $imagePath: '../dist/img/';
 
@@ -26,9 +26,9 @@ $imagePath: '../dist/img/';
 ***************/
 
 a {
-  color: $green;
+  color: $red;
   :hover {
-    color: $turquoise;
+    color: $silver;
   }
 }
 
@@ -111,14 +111,14 @@ nav {
 
       a {
         text-decoration: none;
-        color: #000;
+        color: white;
         cursor: pointer;
       }
       &:last-of-type {
         border-bottom: 0px;
       }
       &.active a, &:hover a {
-        color: #C2C8D1;
+        color: $navy;
         text-decoration: none;
       }
 
@@ -170,19 +170,27 @@ header {
 
   h1 {
     margin: 20px 0;
-    animation-delay: 0.2s;
-    -webkit-animation-delay: 0.2s;
-    -moz-animation-delay: 0.2s;
-    -o-animation-delay: 0.2s;
-    ms-animation-delay: 0.2s;
+    -webkit-animation-duration: .7s;
+    -moz-animation-duration: .7s;
+    -o-animation-duration: .7s;
+    animation-duration: .7s;
+    -webkit-animation-delay: 0.1s;
+    -moz-animation-delay: 0.1s;
+    -o-animation-delay: 0.1s;
+    ms-animation-delay: 0.1s;
+    animation-delay: 0.1s;
   }
   h2 {
     z-index: 3;
-    animation-delay: 1s;
-    -webkit-animation-delay: 1s;
-    -moz-animation-delay: 1s;
-    -o-animation-delay: 1s;
-    ms-animation-delay: 1s;
+    -webkit-animation-duration: .5s;
+    -moz-animation-duration: .5s;
+    -o-animation-duration: .5s;
+    animation-duration: .5s;
+    animation-delay: .7s;
+    -webkit-animation-delay: .7s;
+    -moz-animation-delay: .7s;
+    -o-animation-delay: .7s;
+    ms-animation-delay: .7s;
   }
 }
 

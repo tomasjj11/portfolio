@@ -16,7 +16,11 @@
 	</div>
 	<div class="row git-info hidden-xs">
 		<div class="col-md-12">
-			<p class="font-silver">Last Updated: <span id="lastUpdated"><a ng-href="{{repo.fullPath}}">{{repo.updatedDate.getDate()}}/{{('0'+(repo.updatedDate.getMonth()+1)).slice(-2)}}/{{repo.updatedDate.getFullYear()}}</a></span></p>
+			<p class="font-silver">Last Updated:
+				<span id="lastUpdated">
+					<a ng-href="{{repo.fullPath}}">{{('0'+repo.updatedDate.getDate()).slice(-2)}}/{{('0'+(repo.updatedDate.getMonth()+1)).slice(-2)}}/{{repo.updatedDate.getFullYear()}}</a>
+				</span>
+			</p>
 		</div>
 	</div>
 </nav>

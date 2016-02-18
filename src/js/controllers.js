@@ -42,7 +42,7 @@ portfolioApp.controller('NavigationController', function($scope, $rootScope){
 
         if (err) throw err.message;
 
-        var lastUpdatedDate = new Date(repo.updated_at);
+        var lastUpdatedDate = new Date(repo.pushed_at);
         $scope.$apply( function() {
             $scope.portraitUrl = repo.owner.avatar_url;
             $scope.repo = {
@@ -122,7 +122,7 @@ portfolioApp.controller('IntroductionController', function($scope){
     $("span.role").typed({
         strings: ['software engineer','web designer','web developer.'],
         typeSpeed: 70,
-        startDelay: 2000,
+        startDelay: 1500,
         backSpeed: 10,
         stopNum: 3
         //stringsElement: $('h2 div#typed-strings')
@@ -176,11 +176,16 @@ portfolioApp.controller('ContactController', function($scope, $http){
             return;
         }
 
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'ContactForm',
+            eventAction: 'sent'
+        });
         $scope.isSubmitting = true;
 
         $http({
             method: 'POST',
-            url: '//formspree.io/tomasjj11@gmail.com',
+            url: '//formspree.io/info@thomasjordan.io',
             data: $.param({
                 _replyto: $scope.contact.email.value,
                 _subject: 'Portfolio Contact form submission from ' + $scope.contact.name.value,
