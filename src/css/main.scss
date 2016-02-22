@@ -113,6 +113,10 @@ nav {
         text-decoration: none;
         color: white;
         cursor: pointer;
+
+        &.nav-small-text {
+          display: none;
+        }
       }
       &:last-of-type {
         border-bottom: 0px;
@@ -395,7 +399,7 @@ header {
 *
 ***************/
 
-@media (max-width: 1000px) {
+@media only screen and (max-width: 640px) {
   /*XS*/
 
   body {
@@ -416,11 +420,12 @@ header {
       position: relative;
 
       li {
+        position: relative;
         display: inline-block;
         border: 0;
         height: 60px;
         width:20%;
-        background-position:center center;
+        background-position:center 5px;
         background-size:25px 25px;
         padding:0;
         cursor: pointer;
@@ -430,11 +435,17 @@ header {
           border-left: 0;
         }
 
-        &:hover {
+        &:hover, &.active {
           background-color:$silver;
         }
-        a {
+        a.nav-large-text {
           display:none;
+        }
+        a.nav-small-text {
+          text-indent: 0;
+          display: block;
+          text-align: center;
+          margin-top: 30px;
         }
       }
     }

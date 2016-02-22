@@ -9,7 +9,8 @@
 		<div class="col-sm-12">
 			<ul id="menu">
 				<li ng-repeat="(target, text) in menuItems" ng-class="menuActive == target ? 'active' :''" ng-click="menuClick(target)">
-					<a>{{text}}</a>
+					<a class="nav-large-text">{{text}}</a>
+					<a class="nav-small-text">{{target | capitalize}}</a>
 				</li>
 			</ul>
 		</div>
