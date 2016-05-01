@@ -399,7 +399,7 @@ header {
 *
 ***************/
 
-@media handheld {
+@media (max-width: 1000px) {
   /*XS*/
 
   body {
