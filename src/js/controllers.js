@@ -4,9 +4,6 @@ var portfolioApp = angular.module('portfolioApp', ['jp.ng-bs-animated-button']);
 // Setup variables in $rootScope
 portfolioApp.controller('GlobalController', function($rootScope) {
 
-    $rootScope.width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    $rootScope.height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-
     $rootScope.scrollTo = function(selector) {
         if ( selector == '#introduction' ){
             //#introduction's top is not 0 because it is fixed so we need to make it so!

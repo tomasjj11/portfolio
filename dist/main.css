@@ -140,9 +140,9 @@ header h2 { z-index: 3; -webkit-animation-duration: .5s; -moz-animation-duration
 * MEDIA QUERIES
 *
 ***************/
-@media (max-width: 640px) { /*XS*/
+@media handheld { /*XS*/
   body { font-size: 14px; position: relative; }
-  nav { display: none; position: fixed; height: 60px; width: 100%; bottom: 0; left: 0; z-index: 50; box-shadow: 0px -2px 4px 2px rgba(0, 0, 0, 0.3); }
+  nav { position: fixed; height: 60px; width: 100%; bottom: 0; left: 0; z-index: 50; box-shadow: 0px -2px 4px 2px rgba(0, 0, 0, 0.3); }
   nav #menu { position: relative; }
   nav #menu li { position: relative; display: inline-block; border: 0; height: 60px; width: 20%; background-position: center 5px; background-size: 25px 25px; padding: 0; cursor: pointer; border-left: 1px solid #4E4E4E; }
   nav #menu li:first-of-type { border-left: 0; }
