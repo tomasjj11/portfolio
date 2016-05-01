@@ -104,7 +104,7 @@ nav {
     li {
       text-indent: 30px;
       font-family: 'Roboto';
-      font-size: 1.2em;
+      font-size: 1.3em;
       font-weight: 100;
       padding: 10px 0;
       border-bottom: 1px solid $tundora;
@@ -409,7 +409,7 @@ header {
 
   nav {
     position: fixed;
-    height:60px;
+    height:120px;
     width:100%;
     bottom:0;
     left:0;
@@ -423,13 +423,14 @@ header {
         position: relative;
         display: inline-block;
         border: 0;
-        height: 60px;
+        height: 120px;
         width:20%;
-        background-position:center 5px;
-        background-size:25px 25px;
-        padding:0;
+        background-position:center 20px;
+        background-size:45px 45px;
+        padding:30px 0 0 0;
         cursor: pointer;
         border-left: 1px solid $tundora;
+        font-size: 2em;
 
         &:first-of-type {
           border-left: 0;

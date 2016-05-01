@@ -69,7 +69,7 @@ nav { position: fixed; width: 220px; height: 100vh; padding-left: 10px; padding-
 nav .container { height: 100%; width: 100%; }
 nav #portrait { margin-top: 10px; width: 100%; }
 nav ul { list-style: none; padding: 0px; }
-nav ul li { text-indent: 30px; font-family: 'Roboto'; font-size: 1.2em; font-weight: 100; padding: 10px 0; border-bottom: 1px solid #4E4E4E; }
+nav ul li { text-indent: 30px; font-family: 'Roboto'; font-size: 1.3em; font-weight: 100; padding: 10px 0; border-bottom: 1px solid #4E4E4E; }
 nav ul li a { text-decoration: none; color: white; cursor: pointer; }
 nav ul li a.nav-small-text { display: none; }
 nav ul li:last-of-type { border-bottom: 0px; }
@@ -142,9 +142,9 @@ header h2 { z-index: 3; -webkit-animation-duration: .5s; -moz-animation-duration
 ***************/
 @media (max-width: 1000px) { /*XS*/
   body { font-size: 14px; position: relative; }
-  nav { position: fixed; height: 60px; width: 100%; bottom: 0; left: 0; z-index: 50; box-shadow: 0px -2px 4px 2px rgba(0, 0, 0, 0.3); }
+  nav { position: fixed; height: 120px; width: 100%; bottom: 0; left: 0; z-index: 50; box-shadow: 0px -2px 4px 2px rgba(0, 0, 0, 0.3); }
   nav #menu { position: relative; }
-  nav #menu li { position: relative; display: inline-block; border: 0; height: 60px; width: 20%; background-position: center 5px; background-size: 25px 25px; padding: 0; cursor: pointer; border-left: 1px solid #4E4E4E; }
+  nav #menu li { position: relative; display: inline-block; border: 0; height: 120px; width: 20%; background-position: center 20px; background-size: 45px 45px; padding: 30px 0 0 0; cursor: pointer; border-left: 1px solid #4E4E4E; font-size: 2em; }
   nav #menu li:first-of-type { border-left: 0; }
   nav #menu li:hover, nav #menu li.active { background-color: #C2C8D1; }
   nav #menu li a.nav-large-text { display: none; }
